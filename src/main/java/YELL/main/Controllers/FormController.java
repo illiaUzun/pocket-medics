@@ -19,7 +19,7 @@ public class FormController {
     @Autowired
     FormService service;
 
-
+    Monster monster = new Monster("Spooky");
 }
 
 
