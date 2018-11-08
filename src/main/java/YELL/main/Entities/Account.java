@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "DefaultUser")
-public class UnRegUser {
+public class Account {
 
     @Id
     @GeneratedValue
@@ -19,11 +19,11 @@ public class UnRegUser {
     @Column(name = "e_mail")
     private String email;
 
-    public UnRegUser() {
+    public Account() {
 
     }
 
-    public UnRegUser(int iq, String firstName, String lastName, String email) {
+    public Account(int iq, String firstName, String lastName, String email) {
         this.iq = iq;
         this.firstName = firstName;
         this.lastName = lastName;

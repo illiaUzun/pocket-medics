@@ -2,7 +2,7 @@ package YELL.main.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import YELL.main.Entities.UnRegUser;
+import YELL.main.Entities.Account;
 import YELL.main.Services.RegistrationService;
 
 import java.util.Optional;
@@ -19,13 +19,13 @@ public class RegistrationController {
     RegistrationService service;
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public void addUser(@RequestBody UnRegUser user) {
+    public void addUser(@RequestBody Account user) {
         service.addUser(user);
     }
 
     @RequestMapping("/getusers")
-    public UnRegUser getUserByQueryStringId(@RequestParam(name = "id", required = true) long id) {
-        Optional<UnRegUser> student = service.getStudentById(id);
+    public Account getUserByQueryStringId(@RequestParam(name = "id", required = true) long id) {
+        Optional<Account> student = service.getStudentById(id);
         return student.orElse(null);
     }
 

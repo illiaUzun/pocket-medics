@@ -1,6 +1,6 @@
 package YELL.main.Repositories;
 
-import YELL.main.Entities.UnRegUser;
+import YELL.main.Entities.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UnRegUserRepository extends JpaRepository<UnRegUser, Long> {}
+public interface AccountRepository extends JpaRepository<Account, Long> {}
