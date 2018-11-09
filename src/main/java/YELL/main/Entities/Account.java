@@ -17,8 +17,8 @@ public class Account {
     private String lastName;
     @Column(name = "e_mail")
     private String email;
-    @Column(name = "birthday date")
-    private Date birthad_date;
+    /*@Column(name = "birthday date")
+    private Date birthad_date;*/
     @Column(name = "password")
     private String password;
 
@@ -65,13 +65,13 @@ public class Account {
         this.email = email;
     }
 
-    public Date getBirthad_date() {
+    /*public Date getBirthad_date() {
         return birthad_date;
     }
 
     public void setBirthad_date(Date birthad_date) {
         this.birthad_date = birthad_date;
-    }
+    }*/
 
     public String getPassword() {
         return password;
