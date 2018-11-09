@@ -8,9 +8,8 @@ public class Contact {
 
     @Id
     @GeneratedValue
-    private long id_Profile;
+    private long id_Contact;
     private long id_Account;
-    private long id_Leaf;
     @Column(name = "user_comment")
     private String comment;
 

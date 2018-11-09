@@ -4,13 +4,14 @@ import YELL.main.Entities.Account;
 import YELL.main.Entities.Medic;
 import YELL.main.Services.MedicsTableService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ProfileController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MedicsTableController {
+public class MedicsTableController extends ProfilesController{
 
     @Autowired
     MedicsTableService service;

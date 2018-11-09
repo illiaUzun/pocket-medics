@@ -1,5 +1,7 @@
 package YELL.main.Entities;
 
+import lombok.experimental.Helper;
+
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
 
