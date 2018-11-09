@@ -2,29 +2,32 @@ package YELL.main.Entities;
 
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "DefaultUser")
+@Table(name = "Account")
 public class Account {
 
     @Id
     @GeneratedValue
     private long id;
-    @Column(name = "iq")
-    private int iq;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "e_mail")
     private String email;
+    @Column(name = "birthday date")
+    private Date birthad_date;
+    @Column(name = "password")
+    private String password;
+
 
     public Account() {
 
     }
 
-    public Account(int iq, String firstName, String lastName, String email) {
-        this.iq = iq;
+    public Account(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -36,14 +39,6 @@ public class Account {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public int getIq() {
-        return iq;
-    }
-
-    public void setIq(int iq) {
-        this.iq = iq;
     }
 
     public String getFirstName() {
@@ -68,5 +63,21 @@ public class Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Date getBirthad_date() {
+        return birthad_date;
+    }
+
+    public void setBirthad_date(Date birthad_date) {
+        this.birthad_date = birthad_date;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

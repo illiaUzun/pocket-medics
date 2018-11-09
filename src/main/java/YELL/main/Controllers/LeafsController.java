@@ -14,8 +14,8 @@ public class LeafsController {
      * GET: получение новостей из сервера
      * POST: add your own form to this leaf and to your leafList
      */
-
-    @Autowired
-    LeafService service;
+//
+//    @Autowired
+//    LeafService service;
 
 }

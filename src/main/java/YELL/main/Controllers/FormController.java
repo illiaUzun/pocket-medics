@@ -16,8 +16,8 @@ public class FormController {
      * POST: запись на прием и т.д
      */
 
-    @Autowired
-    FormService service;
+//    @Autowired
+//    FormService service;
 
 }
 

@@ -1,4 +1,4 @@
 package YELL.main.Services;
 
-public class ListOfContacts {
+public class ContactsService {
 }
