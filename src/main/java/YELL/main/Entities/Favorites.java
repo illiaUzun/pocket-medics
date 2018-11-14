@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "contact")
-public class Contact {
+public class Favorites {
 
     @Id
     @GeneratedValue
@@ -12,6 +12,5 @@ public class Contact {
     private long id_Account;
     @Column(name = "user_comment")
     private String comment;
-
 
 }

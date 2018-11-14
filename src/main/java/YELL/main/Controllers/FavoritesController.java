@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class ContactsController {
+public class FavoritesController {
 
     /**
-     * ContactsController:
+     * FavoritesController:
      *
      * POST: addNew
      * PUT: apply changes to existed contacts
@@ -15,7 +15,7 @@ public class ContactsController {
      */
 
 //    @Autowired
-//    ContactsController service;
+//    FavoritesController service;
 
 
 }
