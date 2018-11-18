@@ -3,6 +3,8 @@ package YELL.main.Entities;
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "Account")
@@ -17,11 +19,10 @@ public class Account {
     private String lastName;
     @Column(name = "e_mail")
     private String email;
-    /*@Column(name = "birthday date")
-    private Date birthad_date;*/
     @Column(name = "password")
     private String password;
-
+    //@Column(name = "id_favourites")
+    //private long favourites;
 
     public Account() {
 
@@ -32,6 +33,15 @@ public class Account {
         this.lastName = lastName;
         this.email = email;
     }
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "Comment",
+            joinColumns = { @JoinColumn(name = "id_account") },
+            inverseJoinColumns = { @JoinColumn(name = "id_medic") })
 
     public long getId() {
         return id;
@@ -65,12 +75,12 @@ public class Account {
         this.email = email;
     }
 
-    /*public Date getBirthad_date() {
-        return birthad_date;
+    /*public long getFavourites() {
+        return favourites;
     }
 
-    public void setBirthad_date(Date birthad_date) {
-        this.birthad_date = birthad_date;
+    public void setFavourites(long favourites) {
+        this.favourites = favourites;
     }*/
 
     public String getPassword() {

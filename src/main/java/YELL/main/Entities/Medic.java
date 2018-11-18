@@ -10,7 +10,7 @@ public class Medic{
     /*
     TO DO:
     1. Data (name-lastName, address) integration from common account
-    2.
+    2. Add telephone number/email?
      */
 
     @Id
@@ -37,6 +37,21 @@ public class Medic{
 
     public Medic() {
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "Medics")
 
     public String getAddress() {
         return address;
