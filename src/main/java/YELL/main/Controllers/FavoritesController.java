@@ -1,5 +1,6 @@
 package YELL.main.Controllers;
 
+import YELL.main.Services.FavoritesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +15,7 @@ public class FavoritesController {
      * GET: Forms - after click on contact
      */
 
-//    @Autowired
-//    FavoritesController service;
-
+    @Autowired
+    FavoritesService service;
 
 }

@@ -1,10 +1,10 @@
 package YELL.main.Entities;
 
-import javax.annotation.processing.Generated;
+//import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
+//import java.util.Optional;
 
 @Entity
 @Table(name = "Comment")
