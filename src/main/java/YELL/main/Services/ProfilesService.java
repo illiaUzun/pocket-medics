@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RegistrationService {
+public class ProfilesService {
 
     @Autowired
     AccountRepository repository;
@@ -18,11 +18,21 @@ public class RegistrationService {
         return repository.findAll();
     }
 
+    public void deleteUserById(long id) {
+        repository.deleteById(id);
+    }
+
     public void addUser(Account user) {
         repository.saveAndFlush(user);
     }
 
-    public Optional<Account> getStudentById(long id) {
+    public Optional<Account> getUserById(long id) {
         return repository.findById(id);
     }
+
+    /*public List<Optional<Account>> favourites(long id) {
+        return repository.getOne(id).getFavourites();
+    }*/
+
+
 }

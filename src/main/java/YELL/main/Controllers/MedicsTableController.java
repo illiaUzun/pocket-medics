@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Индекс медиков един с индексом аккаунтов!
+ *
+ */
+
 @RestController
-public class ListController {
+public class MedicsTableController {
 
     @Autowired
     ListService service;
