@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Получение айдишников оставляющих аккаунтов и медика, которому оставляют?
+ * Получение айдишников оставляющего аккаунтов и медика, которому оставляют?
  */
 
 @RestController

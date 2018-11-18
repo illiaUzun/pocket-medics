@@ -17,7 +17,11 @@ public class ListService {
         repository.saveAndFlush(medic);
     }
 
-    public List<Medic> findByCategory(String category){
-        return repository.findByCategory(category);
+    public List<Medic> findMedicsByCategory(String category){
+        return repository.findAllByCategoryOrderByYearsOfExperience(category);
+    }
+
+    public List<Medic> getAllMedics(){
+        return repository.findAll();
     }
 }
