@@ -16,6 +16,8 @@ public class Medic{
     @Id
     @GeneratedValue
     private long id;
+    @OneToOne(optional = false, mappedBy="medic")
+    public Account account;
     @Column(name = "address")
     private String address;
     @Column(name = "category")
@@ -77,4 +79,6 @@ public class Medic{
     public void setYearsOfExperience(double yearsOfExperience) {
         this.yearsOfExperience = yearsOfExperience;
     }
+
+
 }

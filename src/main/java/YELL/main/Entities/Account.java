@@ -11,6 +11,9 @@ public class Account {
     @Id
     @GeneratedValue
     private long id;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "id_medic",unique =  true, nullable = false, updatable = false)
+    private Medic medic;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -79,5 +82,18 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /*
+    Методы
+
+     */
+
+    public Medic getMedic() {
+        return medic;
+    }
+
+    public void setMedic(Medic medic) {
+        this.medic = medic;
     }
 }
