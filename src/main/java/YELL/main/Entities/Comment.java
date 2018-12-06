@@ -7,7 +7,7 @@ import java.util.List;
 //import java.util.Optional;
 
 @Entity
-@Table(name = "Comment")
+@Table(name = "comment")
 public class Comment {
 
 

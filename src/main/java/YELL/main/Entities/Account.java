@@ -7,32 +7,35 @@ import java.util.Set;
 //import java.util.Optional;
 
 @Entity
-@Table(name = "Account")
+@Table(name = "account")
+@SequenceGenerator(name="seq", initialValue=1, allocationSize=100)
 public class Account {
 
+    /*@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
+    private long id;*/
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     @Id
-    @GeneratedValue
     private long id;
 
     @OneToOne(optional = false)
     @JoinColumn(name = "id_medic", unique = true, nullable = false, updatable = false)
     private Medic medic;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "favorites")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "account")
     private Set<Favorites> favorites;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "comment")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "account")
     private Set<Comment>comments;
 
 
-    @Column(name = "first_name")
+    @Column(name = "FIRSTNAME")
     private String firstName;
-    @Column(name = "last_name")
+    @Column(name = "SECONDNAME")
     private String lastName;
-    @Column(name = "e_mail")
+    @Column(name = "EMAIL")
     private String email;
-    @Column(name = "password")
+    @Column(name = "PASSWORD")
     private String password;
-    //@Column(name = "id_favourites")
-    //private long favourites;
 
     public Account() {
 
@@ -43,8 +46,6 @@ public class Account {
         this.lastName = lastName;
         this.email = email;
     }
-
-
 
     public long getId() {
         return id;
@@ -77,14 +78,6 @@ public class Account {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    /*public long getFavourites() {
-        return favourites;
-    }
-
-    public void setFavourites(long favourites) {
-        this.favourites = favourites;
-    }*/
 
     public String getPassword() {
         return password;
