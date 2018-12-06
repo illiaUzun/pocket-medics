@@ -141,13 +141,6 @@
                     <source>10</source>
                     <target>10</target>
                 </configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.ow2.asm</groupId>
-						<artifactId>asm</artifactId>
-						<version>6.2</version> <!-- Use newer version of ASM -->
-					</dependency>
-				</dependencies>
             </plugin>
         </plugins>
 	</build>
