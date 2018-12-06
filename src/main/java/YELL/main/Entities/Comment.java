@@ -1,10 +1,6 @@
 package YELL.main.Entities;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 
 @Entity
 @Table(name = "Comment")
@@ -20,6 +16,9 @@ public class Comment {
     private long accountId;
     @Column(name = "comment")
     private String comment;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     public Comment(long medicId, long accountId, String comment) {
         this.medicId = medicId;

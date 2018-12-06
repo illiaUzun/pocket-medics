@@ -2,6 +2,7 @@ package YELL.main.Entities;
 
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -23,9 +24,24 @@ public class Account {
     private String password;
     //@Column(name = "id_favourites")
     //private long favourites;
+    @OneToMany(
+            mappedBy = "account",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Comment> comments = new ArrayList<>();
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+
 
     public Account() {
-
     }
 
     public Account(String firstName, String lastName, String email) {
@@ -33,15 +49,6 @@ public class Account {
         this.lastName = lastName;
         this.email = email;
     }
-
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
-    @JoinTable(name = "Comment",
-            joinColumns = { @JoinColumn(name = "id_account") },
-            inverseJoinColumns = { @JoinColumn(name = "id_medic") })
 
     public long getId() {
         return id;
