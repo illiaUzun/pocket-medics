@@ -2,6 +2,7 @@ package YELL.main.Entities;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Medics")
@@ -16,6 +17,16 @@ public class Medic{
     @Id
     @GeneratedValue
     private long id;
+
+
+    @OneToOne(optional = false, mappedBy="medic")
+    public Account account;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "comment")
+    private Set<Comment> users;
+    @OneToOne (optional = false, mappedBy="favorites")
+    public  Favorites favorites;
+
+
     @Column(name = "address")
     private String address;
     @Column(name = "category")
@@ -91,5 +102,21 @@ public class Medic{
 
     public void setYearsOfExperience(double yearsOfExperience) {
         this.yearsOfExperience = yearsOfExperience;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Set<Comment> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<Comment> users) {
+        this.users = users;
     }
 }

@@ -1,11 +1,10 @@
 package YELL.main.Entities;
 
-import javax.annotation.processing.Generated;
+//import javax.annotation.processing.Generated;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
+//import java.util.Optional;
 
 @Entity
 @Table(name = "Account")
@@ -14,6 +13,16 @@ public class Account {
     @Id
     @GeneratedValue
     private long id;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name = "id_medic", unique = true, nullable = false, updatable = false)
+    private Medic medic;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "favorites")
+    private Set<Favorites> favorites;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "comment")
+    private Set<Comment>comments;
+
+
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -24,24 +33,9 @@ public class Account {
     private String password;
     //@Column(name = "id_favourites")
     //private long favourites;
-    @OneToMany(
-            mappedBy = "account",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<Comment> comments = new ArrayList<>();
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-
 
     public Account() {
+
     }
 
     public Account(String firstName, String lastName, String email) {
@@ -49,6 +43,8 @@ public class Account {
         this.lastName = lastName;
         this.email = email;
     }
+
+
 
     public long getId() {
         return id;
@@ -97,4 +93,33 @@ public class Account {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    /*
+    Методы для связей в БД
+     */
+
+    public Medic getMedic() {
+        return medic;
+    }
+
+    public void setMedic(Medic medic) {
+        this.medic = medic;
+    }
+
+    public Set<Favorites> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(Set<Favorites> favorites) {
+        this.favorites = favorites;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
 }
+

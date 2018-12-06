@@ -1,8 +1,13 @@
 package YELL.main.Controllers;
 
 import YELL.main.Entities.Medic;
-import YELL.main.Services.MedicsTableService;
+import YELL.main.Services.ListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.rest.webmvc.ProfileController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +24,7 @@ import java.util.List;
 public class MedicsTableController {
 
     @Autowired
-    MedicsTableService service;
+    ListService service;
 
     @RequestMapping(value = "/profiles/medics", method = RequestMethod.POST)
     public void addUser(@RequestBody Medic medic) {
