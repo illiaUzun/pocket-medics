@@ -1,8 +1,10 @@
 package YELL.main.Entities;
 
-import javax.annotation.processing.Generated;
+//import javax.annotation.processing.Generated;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.util.Set;
+//import java.util.Optional;
 
 @Entity
 @Table(name = "Account")
@@ -11,20 +13,26 @@ public class Account {
     @Id
     @GeneratedValue
     private long id;
+
     @OneToOne(optional = false)
-    @JoinColumn(name = "id_medic",unique =  true, nullable = false, updatable = false)
+    @JoinColumn(name = "id_medic", unique = true, nullable = false, updatable = false)
     private Medic medic;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "favorites")
+    private Set<Favorites> favorites;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "comment")
+    private Set<Comment>comments;
+
+
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "e_mail")
     private String email;
-    /*@Column(name = "birthday date")
-    private Date birthad_date;*/
     @Column(name = "password")
     private String password;
-
+    //@Column(name = "id_favourites")
+    //private long favourites;
 
     public Account() {
 
@@ -35,6 +43,8 @@ public class Account {
         this.lastName = lastName;
         this.email = email;
     }
+
+
 
     public long getId() {
         return id;
@@ -68,12 +78,12 @@ public class Account {
         this.email = email;
     }
 
-    /*public Date getBirthad_date() {
-        return birthad_date;
+    /*public long getFavourites() {
+        return favourites;
     }
 
-    public void setBirthad_date(Date birthad_date) {
-        this.birthad_date = birthad_date;
+    public void setFavourites(long favourites) {
+        this.favourites = favourites;
     }*/
 
     public String getPassword() {
@@ -85,8 +95,7 @@ public class Account {
     }
 
     /*
-    Методы
-
+    Методы для связей в БД
      */
 
     public Medic getMedic() {
@@ -95,5 +104,21 @@ public class Account {
 
     public void setMedic(Medic medic) {
         this.medic = medic;
+    }
+
+    public Set<Favorites> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(Set<Favorites> favorites) {
+        this.favorites = favorites;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }
