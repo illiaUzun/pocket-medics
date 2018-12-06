@@ -18,4 +18,4 @@ pipelines:
         script:
         
           - git push https://git.heroku.com/pocket-medic.git HEAD
-               - mvn -B verify # -B batch mode makes Maven less verbose
+            
