@@ -21,9 +21,9 @@ public class Medic{
 
     @OneToOne(optional = false, mappedBy="medic")
     public Account account;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "comment")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "medic")
     private Set<Comment> users;
-    @OneToOne (optional = false, mappedBy="favorites")
+    @OneToOne (optional = false, mappedBy="medic")
     public  Favorites favorites;
 
 
