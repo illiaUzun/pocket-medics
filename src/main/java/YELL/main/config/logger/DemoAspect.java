@@ -1,4 +1,4 @@
-package YELL.main.config;
+package YELL.main.config.logger;
 
 import YELL.main.Entities.Medic;
 import org.aspectj.lang.JoinPoint;

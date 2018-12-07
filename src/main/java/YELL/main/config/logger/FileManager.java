@@ -1,4 +1,4 @@
-package YELL.main.config;
+package YELL.main.config.logger;
 
 import java.io.FileWriter;
 import java.io.IOException;
