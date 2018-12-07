@@ -92,6 +92,7 @@
 			<scope>test</scope>
 		</dependency>
 
+        <!-- зависимости для создания логгера при помощи АОП -->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
@@ -109,7 +110,7 @@
             <artifactId>spring-aop</artifactId>
             <version>5.0.7.RELEASE</version>
         </dependency>
-
+		<!-- зависимости для создания логгера при помощи АОП -->
 
 
 

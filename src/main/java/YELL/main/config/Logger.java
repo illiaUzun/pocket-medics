@@ -1,4 +1,4 @@
-package YELL.main.config;
+/*package YELL.main.config;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -24,5 +24,4 @@ public class Logger {
         public void point_cut() {
         }
 
-    }
-
+    }*/
