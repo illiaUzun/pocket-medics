@@ -23,7 +23,7 @@ public class CommentController {
 
     @RequestMapping(value = "/users/comments", method = RequestMethod.POST)
     public void addComment(@RequestBody Account user, Medic medic, String string) {
-        Comment comment = new Comment(medic.getId(), user.getId(), string);
+        Comment comment = new Comment();
         service.addComment(comment);
     }
 

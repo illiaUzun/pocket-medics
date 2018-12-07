@@ -15,11 +15,11 @@ public class Account {
     private long id;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "id_medic", unique = true, nullable = false, updatable = false)
+    @JoinColumn(name = "account", unique = true, nullable = false, updatable = false)
     private Medic medic;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "favorites")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "account")
     private Set<Favorites> favorites;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "comment")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "account")
     private Set<Comment>comments;
 
 
