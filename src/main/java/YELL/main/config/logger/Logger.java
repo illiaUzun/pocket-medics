@@ -1,6 +1,7 @@
 package YELL.main.config;
 
 import YELL.main.Entities.Medic;
+import YELL.main.config.logger.FileManager;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
