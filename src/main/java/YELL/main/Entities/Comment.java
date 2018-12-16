@@ -16,7 +16,7 @@ public class Comment {
     @JoinColumn(name = "id_account", nullable = false)
     private Account account;
     @ManyToOne (fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "id_medic", nullable = false)git
+    @JoinColumn(name = "id_medic", nullable = false)
     private Medic medic;
 
 
