@@ -3,7 +3,8 @@ package YELL.main.Entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "favorites")
+@Table(name = "Favorites")
+
 public class Favorites {
 
     @Id

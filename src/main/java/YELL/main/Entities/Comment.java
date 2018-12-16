@@ -1,10 +1,6 @@
 package YELL.main.Entities;
 
-//import javax.annotation.processing.Generated;
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
-//import java.util.Optional;
 
 @Entity
 @Table(name = "comment")
@@ -21,7 +17,7 @@ public class Comment {
     private Account account;
     @ManyToOne (fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "id_medic", nullable = false)
-    public Medic medic;
+    private Medic medic;
 
 
     @Column(name = "comment")
