@@ -40,4 +40,11 @@ public class MedicsTableController {
     public List<Medic> getAllMedics() {
         return service.getAllMedics();
     }
+
+    @RequestMapping(value = "/testmedic", method = RequestMethod.POST)
+    public String putTestMedic() {
+        Medic medic = new Medic("gfdg","dcvcxv",5,"vcx","vcxfd");
+        service.addUser(medic);
+        return "Привет, лол";
+    }
 }
