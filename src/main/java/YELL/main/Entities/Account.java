@@ -83,13 +83,16 @@ public class Account {
     )
     private List<Favorites> favorites = new ArrayList<>();
 
-    public void addFavorite(Favorites favorite) {
-        favorites.add(favorite);
-        favorite.setAccount(this);
+    public void addFavorite(Favorites medic) {
+        favorites.add(medic);
+        medic.setAccount(this);
     }
 
-    public void removeFavorite(Favorites favorite) {
-        favorites.remove(favorite);
-        favorite.setAccount(null);
+    public void removeFavorite(Favorites medic) {
+        favorites.remove(medic);
+        medic.setAccount(null);
     }
+
+    /**/
+
 }

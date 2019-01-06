@@ -1,5 +1,7 @@
 package YELL.main.Controllers;
 
+import YELL.main.Entities.Favorites;
+import YELL.main.Entities.Medic;
 import YELL.main.Services.ProfilesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +16,7 @@ public class ProfilesController {
     /**
      * Окно регистрации
      * POST: отправка регистрационных данных в БД
-     * 1. Обновление последовательности, задаваемой БД при удалении
+     * 1. Обновление последовательности, задаваемой БД при удалении?
      * 2. Как получить данные главного аккаунта, какой из аккаунтов главный?
      */
 
@@ -61,5 +63,8 @@ public class ProfilesController {
         user.setFavourites(service.favourites(user.getId()));//service.addUser(user);
     }*/
 
-
+    @RequestMapping(value = "/user/favourites", method = RequestMethod.GET)
+    public List<Favorites> getFavourites(@RequestParam(name = "id", required = true) long id) {
+        return service.favorites(id);
+    }
 }
