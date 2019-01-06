@@ -3,30 +3,18 @@ package YELL.main.Entities;
 //import javax.annotation.processing.Generated;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
-//import java.util.Optional;
 
-@Entity
+@Entity(name = "Account")
 @Table(name = "account")
-@SequenceGenerator(name="seq", initialValue=1, allocationSize=100)
 public class Account {
 
-    /*@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;*/
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     @Id
-    private long id;
-
-    @OneToOne(optional = false)
-    @JoinColumn(name = "account", unique = true, nullable = false, updatable = false)
-    private Medic medic;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "account")
-    private Set<Favorites> favorites;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "account")
-    private Set<Comment>comments;
-
+    @GeneratedValue
+    @Column(name = "account_id")
+    private long account_id;
 
     @Column(name = "FIRSTNAME")
     private String firstName;
@@ -36,24 +24,6 @@ public class Account {
     private String email;
     @Column(name = "PASSWORD")
     private String password;
-
-    public Account() {
-
-    }
-
-    public Account(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -87,32 +57,39 @@ public class Account {
         this.password = password;
     }
 
-    /*
-    Методы для связей в БД
-     */
-
-    public Medic getMedic() {
-        return medic;
-    }
-
-    public void setMedic(Medic medic) {
-        this.medic = medic;
-    }
-
-    public Set<Favorites> getFavorites() {
+    public List<Favorites> getFavorites() {
         return favorites;
     }
 
-    public void setFavorites(Set<Favorites> favorites) {
+    public void setFavorites(List<Favorites> favorites) {
         this.favorites = favorites;
     }
 
-    public Set<Comment> getComments() {
-        return comments;
+    public Account() {
+
     }
 
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
+    public Account(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    /*Связи бд*/
+
+    @OneToMany(
+            mappedBy = "account",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Favorites> favorites = new ArrayList<>();
+
+    public void addFavorite(Favorites favorite) {
+        favorites.add(favorite);
+        favorite.setAccount(this);
+    }
+
+    public void removeFavorite(Favorites favorite) {
+        favorites.remove(favorite);
+        favorite.setAccount(null);
     }
 }
-

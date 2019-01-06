@@ -11,10 +11,10 @@ public class Favorites {
     @GeneratedValue
     private long id_favorites;
 
-
-    @ManyToOne (fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "id_account", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id")
     private Account account;
+
     @OneToOne(optional = false)
     @JoinColumn(name="id_medic", unique = true, nullable = false, updatable = false)
     private Medic medic;
@@ -52,5 +52,4 @@ public class Favorites {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
 }
