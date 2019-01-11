@@ -23,6 +23,11 @@ public class Account {
     @Column(name = "FAVOURITES")
     private ArrayList<Medic> favourites;
 
+
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private Medic medic;
+
     public String getFirstName() {
         return firstName;
     }

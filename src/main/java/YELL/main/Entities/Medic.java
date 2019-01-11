@@ -16,11 +16,9 @@ public class Medic {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
-    private Account account;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "medic")
     private Set<Comment> users;
 
@@ -35,6 +33,10 @@ public class Medic {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     public Medic(String address, String category, double yearsOfExperience, String firstName, String lastName) {
         this.address = address;
