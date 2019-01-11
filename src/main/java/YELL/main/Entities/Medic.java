@@ -15,12 +15,11 @@ public class Medic {
     */
 
     @Id
-    @GeneratedValue
     private long id;
 
-
-    @OneToOne(optional = false, mappedBy="medic")
-    public Account account;
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    private Account account;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "medic")
     private Set<Comment> users;
 
