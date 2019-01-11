@@ -25,8 +25,8 @@ public class ProfilesController {
     @Autowired
     ProfilesService profilesService;
 
-//    @Autowired
-//    ListService listService;
+    @Autowired
+    ListService listService;
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public void addUser(@RequestBody Account user) {

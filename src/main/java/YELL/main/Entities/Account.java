@@ -92,6 +92,7 @@ public class Account {
         this.email = email;
     }
 
+
     /*Связи бд*/
 
 //    @OneToMany(

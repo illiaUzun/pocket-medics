@@ -8,11 +8,11 @@ import java.util.Set;
 @Table(name = "medic")
 public class Medic {
 
-    /*
-    TO DO:
-    1. Data (name-lastName, address) integration from common account
-    2. Add telephone number/email?
-     */
+    /**
+    * TO DO:
+    * 1. Data (name-lastName, address) integration from common account
+    * 2. Add telephone number/email?
+    */
 
     @Id
     @GeneratedValue
@@ -55,12 +55,13 @@ public class Medic {
         this.id = id;
     }
 
-//    @ManyToMany(fetch = FetchType.LAZY,
-//            cascade = {
-//                    CascadeType.PERSIST,
-//                    CascadeType.MERGE
-//            },
-//            mappedBy = "Medics")
+    @OneToOne(fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "Medics")
+
 
     public String getAddress() {
         return address;
