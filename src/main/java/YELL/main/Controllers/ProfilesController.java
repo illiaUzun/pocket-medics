@@ -55,9 +55,9 @@ public class ProfilesController {
     }
 
     @RequestMapping(value = "/user/favourite", method = RequestMethod.GET)
-    public void addFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
+    public String addFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
                              @RequestParam(name = "id_User", required = true) long idUser) {
-        System.out.print("LOL  " + idMedic + "KEK  " + idUser);
+        return ("LOL  " + idMedic + "KEK  " + idUser);
         //profilesService.getUserById(idUser).get().getFavourites().add(listService.getMedicById(idMedic).get());
     }
 
