@@ -68,6 +68,8 @@ public class ProfilesController {
     }
 
 
+    //
+
 //    //см. п.2
 //    @RequestMapping(value = "/users", method = RequestMethod.POST)
 //    public void addToFavourites(@RequestParam(name = "id", required = true) long id) {
