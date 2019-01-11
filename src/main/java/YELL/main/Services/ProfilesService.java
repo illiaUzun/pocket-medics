@@ -34,4 +34,8 @@ public class ProfilesService {
     public List<Favorites> favorites(long id) {
         return repository.getOne(id).getFavorites();
     }
+
+    public void addFavorite(long id_medic, long id_account){
+        repository.getOne(id_account).getFavorites().add(id_medic);
+    }
 }

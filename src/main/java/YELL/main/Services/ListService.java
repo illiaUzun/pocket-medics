@@ -24,4 +24,8 @@ public class ListService {
     public List<Medic> getAllMedics(){
         return repository.findAll();
     }
+
+    public Medic getById (long id){
+        return repository.getOne(id);
+    }
 }

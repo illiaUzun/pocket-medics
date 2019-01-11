@@ -67,4 +67,10 @@ public class ProfilesController {
     public List<Favorites> getFavourites(@RequestParam(name = "id", required = true) long id) {
         return service.favorites(id);
     }
+
+    @RequestMapping(value = "/user/favourites", method = RequestMethod.POST)
+    public void addFavourite(@RequestParam(name = "id_medic", required = true) long id) {
+        //return service.favorites(id);
+        service.addFavorite();
+    }
 }
