@@ -25,8 +25,8 @@ public class ProfilesController {
     @Autowired
     ProfilesService profilesService;
 
-    @Autowired
-    ListService listService;
+//    @Autowired
+//    ListService listService;
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public void addUser(@RequestBody Account user) {
@@ -55,17 +55,17 @@ public class ProfilesController {
         return profilesService.getUserById(id).get().getFavourites();
     }
 
-    @RequestMapping(value = "/user/favourites", method = RequestMethod.POST)
-    public void addFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
-                             @RequestParam(name = "id_User", required = true) long idUser) {
-        profilesService.getUserById(idUser).get().getFavourites().add(listService.getMedicById(idMedic).get());
-    }
-
-    @RequestMapping(value = "/user/favourites", method = RequestMethod.DELETE)
-    public void deleteFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
-                                @RequestParam(name = "id_User", required = true) long idUser) {
-        profilesService.getUserById(idUser).get().getFavourites().remove(listService.getMedicById(idMedic).get());
-    }
+//    @RequestMapping(value = "/user/favourites", method = RequestMethod.POST)
+//    public void addFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
+//                             @RequestParam(name = "id_User", required = true) long idUser) {
+//        profilesService.getUserById(idUser).get().getFavourites().add(listService.getMedicById(idMedic).get());
+//    }
+//
+//    @RequestMapping(value = "/user/favourites", method = RequestMethod.DELETE)
+//    public void deleteFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
+//                                @RequestParam(name = "id_User", required = true) long idUser) {
+//        profilesService.getUserById(idUser).get().getFavourites().remove(listService.getMedicById(idMedic).get());
+//    }
 
 
     //
