@@ -29,6 +29,7 @@ public class ListService {
     public Optional<Medic> getMedicById (long id){
         return repository.findById(id);
     }
+
     public void deleteMedicById(long id) {
         repository.deleteById(id);
     }

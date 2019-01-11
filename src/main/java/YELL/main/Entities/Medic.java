@@ -15,12 +15,11 @@ public class Medic {
     */
 
     @Id
-    @GeneratedValue
     private long id;
 
-
-    @OneToOne(optional = false, mappedBy="medic")
-    public Account account;
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    private Account account;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "medic")
     private Set<Comment> users;
 
@@ -54,14 +53,6 @@ public class Medic {
     public void setId(long id) {
         this.id = id;
     }
-
-    @OneToOne(fetch = FetchType.EAGER,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "Medics")
-
 
     public String getAddress() {
         return address;
