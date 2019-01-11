@@ -1,7 +1,6 @@
 package YELL.main.Services;
 
 //import YELL.main.Entities.Favorites;
-import YELL.main.Entities.Medic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import YELL.main.Entities.Account;
