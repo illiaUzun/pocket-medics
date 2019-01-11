@@ -1,5 +1,6 @@
 package YELL.main.Controllers;
 
+import YELL.main.Entities.Account;
 import YELL.main.Entities.Medic;
 import YELL.main.Services.ListService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.data.rest.webmvc.ProfileController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * !!Индекс медиков един с индексом аккаунтов!!
@@ -27,8 +28,8 @@ public class MedicsTableController {
     ListService service;
 
     @RequestMapping(value = "/profiles/medics", method = RequestMethod.POST)
-    public void addUser(@RequestBody Medic medic) {
-        service.addUser(medic);
+    public void addMedic(@RequestBody Medic medic) {
+        service.addMedic(medic);
     }
 
     @RequestMapping(value = "/profiles/medic", method = RequestMethod.GET)
@@ -41,10 +42,21 @@ public class MedicsTableController {
         return service.getAllMedics();
     }
 
-    @RequestMapping(value = "/testmedic", method = RequestMethod.POST)
-    public String putTestMedic() {
-        Medic medic = new Medic("gfdg","dcvcxv",5,"vcx","vcxfd");
-        service.addUser(medic);
-        return "Привет, лол";
+    @RequestMapping(value = "/medic", method = RequestMethod.GET)
+    public Medic getMedicById(@RequestParam(name = "id", required = true) long id) {
+        Optional<Medic> user = service.getMedicById(id);
+        return user.orElse(null);
     }
+
+    @RequestMapping(value = "/medic", method = RequestMethod.DELETE)
+    public void deleteMedicById(@RequestParam(name = "id", required = true) long id) {
+        service.deleteMedicById(id);
+    }
+
+//    @RequestMapping(value = "/testmedic", method = RequestMethod.POST)
+//    public String putTestMedic() {
+//        Medic medic = new Medic("gfdg","dcvcxv",5,"vcx","vcxfd");
+//        service.addMedic(medic);
+//        return "Привет, лол";
+//    }
 }

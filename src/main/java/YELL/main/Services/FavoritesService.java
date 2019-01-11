@@ -1,4 +1,5 @@
-package YELL.main.Services;
+
+/*package YELL.main.Services;
 
 import YELL.main.Controllers.FavoritesController;
 import YELL.main.Entities.Favorites;
@@ -20,9 +21,14 @@ public class FavoritesService {
         repository.saveAndFlush(medic);
     }
 
+    public void deleteFavorite(Favorites medic){
+        repository.deleteById(medic.getId_favorites());
+    }
+
     public List<Favorites> getAllFavorites(long id_account) {
         return repository.getAllByAccountAccount_id(id_account);
     }
 
 
 }
+*/

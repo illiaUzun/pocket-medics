@@ -24,6 +24,8 @@ public class Account {
     private String email;
     @Column(name = "PASSWORD")
     private String password;
+    @Column(name = "FAVOURITES")
+    private ArrayList<Medic> favourites;
 
     public String getFirstName() {
         return firstName;
@@ -57,42 +59,58 @@ public class Account {
         this.password = password;
     }
 
-    public List<Favorites> getFavorites() {
-        return favorites;
+    public long getAccount_id() {
+        return account_id;
     }
 
-    public void setFavorites(List<Favorites> favorites) {
-        this.favorites = favorites;
+    public void setAccount_id(long account_id) {
+        this.account_id = account_id;
     }
+
+    public ArrayList<Medic> getFavourites() {
+        return favourites;
+    }
+
+    public void setFavourites(ArrayList<Medic> favourites) {
+        this.favourites = favourites;
+    }
+
+    //    public List<Favorites> getFavorites() {
+//        return favorites;
+//    }
+//
+//    public void setFavorites(List<Favorites> favorites) {
+//        this.favorites = favorites;
+//    }
 
     public Account() {
-
     }
 
     public Account(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
     }
 
     /*Связи бд*/
 
-    @OneToMany(
-            mappedBy = "account",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<Favorites> favorites = new ArrayList<>();
+//    @OneToMany(
+//            mappedBy = "account",
+//            cascade = CascadeType.ALL,
+//            orphanRemoval = true
+//    )
+//
+//    private List<Favorites> favorites = new ArrayList<>();
+//
+//    public void addFavorite(Favorites medic) {
+//        favorites.add(medic);
+//        medic.setAccount(this);
+//    }
+//
+//    public void removeFavorite(Favorites medic) {
+//        favorites.remove(medic);
+//        medic.setAccount(null);
+//    }
 
-    public void addFavorite(Favorites medic) {
-        favorites.add(medic);
-        medic.setAccount(this);
-    }
-
-    public void removeFavorite(Favorites medic) {
-        favorites.remove(medic);
-        medic.setAccount(null);
-    }
-
-    /**/
 
 }

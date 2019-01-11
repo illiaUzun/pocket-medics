@@ -1,4 +1,4 @@
-package YELL.main.Repositories;
+/*package YELL.main.Repositories;
 
 import YELL.main.Entities.Favorites;
 import YELL.main.Entities.Medic;
@@ -11,3 +11,4 @@ public interface FavoritesRepository extends JpaRepository<Favorites, Long> {
     List<Favorites> getAllByAccountAccount_id (long id);
 
 }
+*/

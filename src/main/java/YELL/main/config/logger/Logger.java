@@ -26,7 +26,7 @@ public class Logger {
     }
 
     //Нужен для определения среза точек
-    @Pointcut("execution(* YELL.main.Controllers.MedicsTableController.addUser(..))")
+    @Pointcut("execution(* YELL.main.Controllers.MedicsTableController.addMedic(..))")
     public void point_cut(){
     }
 

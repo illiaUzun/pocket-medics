@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "medic")
-public class Medic{
+public class Medic {
 
     /*
     TO DO:
@@ -23,8 +23,6 @@ public class Medic{
     public Account account;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "medic")
     private Set<Comment> users;
-    @OneToOne (optional = false, mappedBy="medic")
-    public  Favorites favorites;
 
 
     @Column(name = "address")
@@ -57,12 +55,12 @@ public class Medic{
         this.id = id;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "Medics")
+//    @ManyToMany(fetch = FetchType.LAZY,
+//            cascade = {
+//                    CascadeType.PERSIST,
+//                    CascadeType.MERGE
+//            },
+//            mappedBy = "Medics")
 
     public String getAddress() {
         return address;

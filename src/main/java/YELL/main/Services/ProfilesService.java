@@ -1,6 +1,7 @@
 package YELL.main.Services;
 
-import YELL.main.Entities.Favorites;
+//import YELL.main.Entities.Favorites;
+import YELL.main.Entities.Medic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import YELL.main.Entities.Account;
@@ -29,13 +30,5 @@ public class ProfilesService {
 
     public Optional<Account> getUserById(long id) {
         return repository.findById(id);
-    }
-
-    public List<Favorites> favorites(long id) {
-        return repository.getOne(id).getFavorites();
-    }
-
-    public void addFavorite(long id_medic, long id_account){
-        repository.getOne(id_account).getFavorites().add(id_medic);
     }
 }

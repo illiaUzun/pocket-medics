@@ -13,4 +13,5 @@ public interface MedicsTableRepository extends JpaRepository<Medic, Long> {
 
     List<Medic> findAllByCategoryOrderByYearsOfExperience(String category);
 
+
 }

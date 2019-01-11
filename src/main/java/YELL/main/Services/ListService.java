@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ListService {
@@ -13,7 +14,7 @@ public class ListService {
     @Autowired
     MedicsTableRepository repository;
 
-    public void addUser(Medic medic) {
+    public void addMedic(Medic medic) {
         repository.saveAndFlush(medic);
     }
 
@@ -25,7 +26,10 @@ public class ListService {
         return repository.findAll();
     }
 
-    public Medic getById (long id){
-        return repository.getOne(id);
+    public Optional<Medic> getMedicById (long id){
+        return repository.findById(id);
+    }
+    public void deleteMedicById(long id) {
+        repository.deleteById(id);
     }
 }
