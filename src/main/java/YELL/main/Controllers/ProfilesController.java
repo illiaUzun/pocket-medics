@@ -54,11 +54,10 @@ public class ProfilesController {
         return profilesService.getUserById(id).get().getFavourites();
     }
 
-    @RequestMapping(value = "/user/favourite", method = RequestMethod.GET)
-    public String addFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
+    @RequestMapping(value = "/user/favourites", method = RequestMethod.PUT)
+    public void addFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
                              @RequestParam(name = "id_User", required = true) long idUser) {
-        //profilesService.getUserById(idUser).get().getFavourites().add(listService.getMedicById(idMedic).get());
-        return ( profilesService.getUserById(idUser).get().getLastName() + "     " + listService.getMedicById(idMedic).get().getFirstName());
+        profilesService.getUserById(idUser).get().getFavourites().add(listService.getMedicById(idMedic).get());
     }
 
     @RequestMapping(value = "/user/favourite", method = RequestMethod.PUT)
