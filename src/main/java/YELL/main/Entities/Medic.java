@@ -54,14 +54,6 @@ public class Medic {
         this.id = id;
     }
 
-    @OneToOne(fetch = FetchType.EAGER,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "Medics")
-
-
     public String getAddress() {
         return address;
     }

@@ -1,6 +1,5 @@
 package YELL.main.Controllers;
 
-//import YELL.main.Entities.Favorites;
 import YELL.main.Entities.Medic;
 import YELL.main.Services.ListService;
 import YELL.main.Services.ProfilesService;

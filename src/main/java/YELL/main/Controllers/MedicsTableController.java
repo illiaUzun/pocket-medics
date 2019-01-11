@@ -1,6 +1,5 @@
 package YELL.main.Controllers;
 
-import YELL.main.Entities.Account;
 import YELL.main.Entities.Medic;
 import YELL.main.Services.ListService;
 import org.springframework.beans.factory.annotation.Autowired;
