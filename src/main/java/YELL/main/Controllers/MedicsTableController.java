@@ -52,11 +52,4 @@ public class MedicsTableController {
     public void deleteMedicById(@RequestParam(name = "id", required = true) long id) {
         service.deleteMedicById(id);
     }
-
-//    @RequestMapping(value = "/testmedic", method = RequestMethod.POST)
-//    public String putTestMedic() {
-//        Medic medic = new Medic("gfdg","dcvcxv",5,"vcx","vcxfd");
-//        service.addMedic(medic);
-//        return "Привет, лол";
-//    }
 }
