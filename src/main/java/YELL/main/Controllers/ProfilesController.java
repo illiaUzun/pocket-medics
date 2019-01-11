@@ -55,17 +55,17 @@ public class ProfilesController {
         return profilesService.getUserById(id).get().getFavourites();
     }
 
-//    @RequestMapping(value = "/user/favourites", method = RequestMethod.POST)
-//    public void addFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
-//                             @RequestParam(name = "id_User", required = true) long idUser) {
-//        profilesService.getUserById(idUser).get().getFavourites().add(listService.getMedicById(idMedic).get());
-//    }
-//
-//    @RequestMapping(value = "/user/favourites", method = RequestMethod.DELETE)
-//    public void deleteFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
-//                                @RequestParam(name = "id_User", required = true) long idUser) {
-//        profilesService.getUserById(idUser).get().getFavourites().remove(listService.getMedicById(idMedic).get());
-//    }
+    @RequestMapping(value = "/user/favourites", method = RequestMethod.PUT)
+    public void addFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
+                             @RequestParam(name = "id_User", required = true) long idUser) {
+        profilesService.getUserById(idUser).get().getFavourites().add(listService.getMedicById(idMedic).get());
+    }
+
+    @RequestMapping(value = "/user/favourites", method = RequestMethod.PUT)
+    public void deleteFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
+                                @RequestParam(name = "id_User", required = true) long idUser) {
+        profilesService.getUserById(idUser).get().getFavourites().remove(listService.getMedicById(idMedic).get());
+    }
 
 
     //
