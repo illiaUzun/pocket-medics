@@ -20,7 +20,7 @@ public class Account {
     private String email;
     @Column(name = "PASSWORD")
     private String password;
-    /**@Column(name = "FAVOURITES")*/
+    @Column(name = "FAVOURITES")
     private ArrayList<Medic> favourites;
 
 
