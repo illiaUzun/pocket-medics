@@ -15,6 +15,7 @@ public class Medic {
     */
 
     @Id
+    @Column(name = "id")
     private long id;
 
     @OneToOne(fetch = FetchType.LAZY)
