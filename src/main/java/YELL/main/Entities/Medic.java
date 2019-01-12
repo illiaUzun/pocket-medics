@@ -9,13 +9,13 @@ import java.util.Set;
 public class Medic {
 
     /**
-    * TO DO:
-    * 1. Data (name-lastName, address) integration from common account
-    * 2. Add telephone number/email?
-    */
+     * TO DO:
+     * 1. Data (name-lastName, address) integration from common account
+     * 2. Add telephone number/email?
+     */
 
     @Id
-    @Column(name = "id")
+    @Column(name = "medic_id")
     @GeneratedValue
     private long id;
 

@@ -20,9 +20,11 @@ public class Account {
     private String email;
     @Column(name = "PASSWORD")
     private String password;
-    /**@Column(name = "FAVOURITES")*/
+    /**
+     * @Column(name = "FAVOURITES")
+     */
     @ElementCollection
-    private ArrayList<Medic> favourites;
+    private List<Medic> favourites;
 
 
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL,
