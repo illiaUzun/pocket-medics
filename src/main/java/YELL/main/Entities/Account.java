@@ -1,6 +1,7 @@
 package YELL.main.Entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "Account")
@@ -71,7 +72,7 @@ public class Account {
         this.account_id = account_id;
     }
 
-    public ArrayList<Medic> getFavourites() {
+    public List<Medic> getFavourites() {
         return favourites;
     }
 
