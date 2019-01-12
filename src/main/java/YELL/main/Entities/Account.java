@@ -21,9 +21,6 @@ public class Account {
     private String email;
     @Column(name = "PASSWORD")
     private String password;
-    /**
-     * @Column(name = "FAVOURITES")
-     */
     @ElementCollection
     @CollectionTable(name = "account_favourites", joinColumns = @JoinColumn(name = "account_id"))
     @Column(name = "favourite_medic")
@@ -82,14 +79,6 @@ public class Account {
         this.favourites = favourites;
     }
 
-    //    public List<Favorites> getFavorites() {
-//        return favorites;
-//    }
-//
-//    public void setFavorites(List<Favorites> favorites) {
-//        this.favorites = favorites;
-//    }
-
     public Account() {
     }
 
@@ -98,27 +87,5 @@ public class Account {
         this.lastName = lastName;
         this.email = email;
     }
-
-
-    /*Связи бд*/
-
-//    @OneToMany(
-//            mappedBy = "account",
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true
-//    )
-//
-//    private List<Favorites> favorites = new ArrayList<>();
-//
-//    public void addFavorite(Favorites medic) {
-//        favorites.add(medic);
-//        medic.setAccount(this);
-//    }
-//
-//    public void removeFavorite(Favorites medic) {
-//        favorites.remove(medic);
-//        medic.setAccount(null);
-//    }
-
 
 }

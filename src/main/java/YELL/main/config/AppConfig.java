@@ -1,15 +1,7 @@
 package YELL.main.config;
 
-import YELL.main.Controllers.CommentController;
 //import YELL.main.Controllers.FavoritesController;
-import YELL.main.Controllers.MedicsTableController;
-import YELL.main.Controllers.ProfilesController;
-import YELL.main.Repositories.AccountRepository;
-import YELL.main.Services.CommentService;
 //import YELL.main.Services.FavoritesService;
-import YELL.main.Services.ListService;
-import YELL.main.Services.ProfilesService;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;

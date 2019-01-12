@@ -1,7 +1,6 @@
 package YELL.main.Controllers;
 
-import YELL.main.Entities.Medic;
-import YELL.main.Services.ListService;
+import YELL.main.Services.MedicService;
 import YELL.main.Services.ProfilesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +24,7 @@ public class ProfilesController {
     ProfilesService profilesService;
 
     @Autowired
-    ListService listService;
+    MedicService medicService;
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public void addUser(@RequestBody Account user) {
@@ -57,33 +56,13 @@ public class ProfilesController {
     @RequestMapping(value = "/user/favourite", method = RequestMethod.POST)
     public void addFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
                              @RequestParam(name = "id_User", required = true) long idUser) {
-          profilesService.addFavourite(profilesService.getUserById(idUser).get(), listService.getMedicById(idMedic).get());
-}
+        profilesService.addFavourite(profilesService.getUserById(idUser).get(), medicService.getMedicById(idMedic).get());
+    }
 
     @RequestMapping(value = "/user/favourites", method = RequestMethod.POST)
     public void deleteFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
                                 @RequestParam(name = "id_User", required = true) long idUser) {
-        profilesService.deleteFavourite(profilesService.getUserById(idUser).get(), listService.getMedicById(idMedic).get());
+        profilesService.deleteFavourite(profilesService.getUserById(idUser).get(), medicService.getMedicById(idMedic).get());
     }
 
-
-    //
-
-//    //см. п.2
-//    @RequestMapping(value = "/users", method = RequestMethod.POST)
-//    public void addToFavourites(@RequestParam(name = "id", required = true) long id) {
-//        service.addToFavourites(id).add(service.getUserById(id));
-//    }
-//
-//    //см. п.2
-//    @RequestMapping(value = "/user/favourites", method = RequestMethod.GET)
-//    public List<Optional<Account>> getFavourites() {
-//        return service.favourites(id);
-//    }
-//
-//    //подгружать избранные в List аккаунта через БД?
-//    @RequestMapping(value = "/users", method = RequestMethod.POST)
-//    public void setFavourites(@RequestBody Account user) {
-//        user.setFavourites(service.favourites(user.getId()));//service.addMedic(user);
-//    }
 }
