@@ -59,6 +59,14 @@ public class ProfilesController {
                              @RequestParam(name = "id_User", required = true) long idUser) {
         //return (profilesService.getUserById(idUser).get().getLastName() + "        " + listService.getMedicById(idMedic).get().getFirstName());
         profilesService.getUserById(idUser).get().getFavourites().add(listService.getMedicById(idMedic).get());
+
+
+
+        Account account = new Account("testA","testA", "testA");
+        Medic medic = new Medic("testM", "testM", 323, "testM", "testM");
+
+
+        account.getFavourites().add(medic);
 }
 
     @RequestMapping(value = "/user/favourites", method = RequestMethod.POST)
