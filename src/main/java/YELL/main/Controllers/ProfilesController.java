@@ -54,14 +54,14 @@ public class ProfilesController {
         return profilesService.getUserById(id).get().getFavourites();
     }
 
-    @RequestMapping(value = "/user/favourite", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/favourite", method = RequestMethod.PUT)
     public void addFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
                              @RequestParam(name = "id_User", required = true) long idUser) {
         //return (profilesService.getUserById(idUser).get().getLastName() + "        " + listService.getMedicById(idMedic).get().getFirstName());
         profilesService.getUserById(idUser).get().getFavourites().add(listService.getMedicById(idMedic).get());
     }
 
-    @RequestMapping(value = "/user/favourites", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/favourites", method = RequestMethod.PUT)
     public void deleteFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
                                 @RequestParam(name = "id_User", required = true) long idUser) {
         profilesService.getUserById(idUser).get().getFavourites().remove(listService.getMedicById(idMedic).get());
