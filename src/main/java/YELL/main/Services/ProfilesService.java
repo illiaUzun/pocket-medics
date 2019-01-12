@@ -37,6 +37,8 @@ public class ProfilesService {
         repository.save(account);
     }
 
-
-
+    public void deleteFavourite(Account account, Medic medic) {
+        account.getFavourites().remove(medic);
+        repository.save(account);
+    }
 }
