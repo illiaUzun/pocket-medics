@@ -25,8 +25,8 @@ public class Account {
      * @Column(name = "FAVOURITES")
      */
     @ElementCollection
-//    @CollectionTable(name = "favourites", joinColumns = @JoinColumn(name = "account_id"))
-//    @Column(name = "favourite_medic")
+    @CollectionTable(name = "account_favourites", joinColumns = @JoinColumn(name = "account_id"))
+    @Column(name = "favourite_medic")
     private List<Medic> favourites = new ArrayList<>();
 
 
