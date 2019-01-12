@@ -1,7 +1,7 @@
 package YELL.main.Entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Account")
 @Table(name = "account")
