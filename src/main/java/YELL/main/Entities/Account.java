@@ -21,6 +21,7 @@ public class Account {
     @Column(name = "PASSWORD")
     private String password;
     /**@Column(name = "FAVOURITES")*/
+    @ElementCollection
     private ArrayList<Medic> favourites;
 
 

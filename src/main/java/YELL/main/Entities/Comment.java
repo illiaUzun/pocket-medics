@@ -19,12 +19,8 @@ public class Comment {
     @JoinColumn(name = "id_medic", nullable = false)
     private Medic medic;
 
-
     @Column(name = "comment")
     private String comment;
-
-
-
 
     public long getId() {
         return id;
@@ -33,7 +29,6 @@ public class Comment {
     public void setId(long id) {
         this.id = id;
     }
-
 
     public String getComment() {
         return comment;
