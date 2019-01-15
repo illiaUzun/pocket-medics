@@ -2,8 +2,8 @@ package YELL.main.Entities;
 
 import javax.persistence.*;
 
-@Entity(name = "ILoveNika")
-@Table(name = "comments_")
+@Entity
+@Table(name = "comments")
 public class Comment {
 
     @Id
