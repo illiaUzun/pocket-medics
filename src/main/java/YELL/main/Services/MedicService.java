@@ -1,5 +1,7 @@
 package YELL.main.Services;
 
+import YELL.main.Entities.Account;
+import YELL.main.Entities.Comment;
 import YELL.main.Entities.Medic;
 import YELL.main.Repositories.MedicsTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +20,29 @@ public class MedicService {
         repository.saveAndFlush(medic);
     }
 
-    public List<Medic> findMedicsByCategory(String category){
+    public List<Medic> findMedicsByCategory(String category) {
         return repository.findAllByCategoryOrderByYearsOfExperience(category);
     }
 
-    public List<Medic> getAllMedics(){
+    public List<Medic> getAllMedics() {
         return repository.findAll();
     }
 
-    public Optional<Medic> getMedicById (long id){
+    public Optional<Medic> getMedicById(long id) {
         return repository.findById(id);
     }
 
     public void deleteMedicById(long id) {
         repository.deleteById(id);
+    }
+
+    public void addComment(Medic medic, Comment comment) {
+        medic.getComments().add(comment);
+        repository.save(medic);
+    }
+
+    public void deleteComment(Medic medic, int id) {
+        medic.getComments().remove(id);
+        repository.save(medic);
     }
 }

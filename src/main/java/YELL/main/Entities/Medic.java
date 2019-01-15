@@ -2,7 +2,7 @@ package YELL.main.Entities;
 
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "medic")
@@ -19,10 +19,6 @@ public class Medic {
     @GeneratedValue
     private long id;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "medic")
-    private Set<Comment> users;
-
-
     @Column(name = "address")
     private String address;
     @Column(name = "category")
@@ -33,6 +29,10 @@ public class Medic {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @ElementCollection
+    @CollectionTable(name = "comments", joinColumns = @JoinColumn(name = "medic_id"))
+    @Column(name = "comments")
+    private List<Comment> comments = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
     @JoinColumn(name = "account_id")
@@ -105,11 +105,11 @@ public class Medic {
         this.account = account;
     }
 
-    public Set<Comment> getUsers() {
-        return users;
+    public List<Comment> getComments() {
+        return comments;
     }
 
-    public void setUsers(Set<Comment> users) {
-        this.users = users;
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

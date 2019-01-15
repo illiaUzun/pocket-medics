@@ -1,13 +1,16 @@
 package YELL.main.Controllers;
 
+import YELL.main.Entities.Comment;
 import YELL.main.Entities.Medic;
 import YELL.main.Services.MedicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.PermissionDeniedDataAccessException;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
+import sun.jvm.hotspot.code.CompiledMethod;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,5 +52,28 @@ public class MedicsController {
     @RequestMapping(value = "/medic", method = RequestMethod.DELETE)
     public void deleteMedicById(@RequestParam(name = "id", required = true) long id) {
         service.deleteMedicById(id);
+    }
+
+    @RequestMapping(value = "/medic/comments", method = RequestMethod.GET)
+    public String getFavourites(@RequestParam(name = "id", required = true) long id) {
+        return service.getMedicById(id).get().getComments().toString();
+    }
+
+    @RequestMapping(value = "/medic/add_comment", method = RequestMethod.POST)
+    public void addFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
+                             @RequestParam(name = "id_User", required = true) long idUser,
+                             @RequestParam(name = "comment", required = true) String comment) {
+        service.addComment(service.getMedicById(idMedic).get(), new Comment(idUser, comment));
+    }
+
+    @RequestMapping(value = "/medic/delete_comments", method = RequestMethod.POST)
+    public void deleteFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
+                                @RequestParam(name = "id_User", required = true) long idUser,
+                                @RequestParam(name = "id_comment", required = true) int idComment) {
+        if (idUser == service.getMedicById(idMedic).get().getComments().get(idComment).accountId) {
+            service.deleteComment(service.getMedicById(idMedic).get(), idComment);
+        } else {
+            System.out.println("Соси член лох, ты не создатель этого комментария");
+        }
     }
 }
