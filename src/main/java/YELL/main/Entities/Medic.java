@@ -1,6 +1,9 @@
 package YELL.main.Entities;
 
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -32,6 +35,7 @@ public class Medic {
     @ElementCollection
     @CollectionTable(name = "comments", joinColumns = @JoinColumn(name = "medic_id"))
     @Column(name = "comments")
+    @Cascade({CascadeType.ALL})
     private List<Comment> comments = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
