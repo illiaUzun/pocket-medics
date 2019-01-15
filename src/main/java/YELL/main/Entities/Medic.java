@@ -35,6 +35,7 @@ public class Medic {
     @ElementCollection
     @CollectionTable(name = "comments", joinColumns = @JoinColumn(name = "medic_id"))
     @Column(name = "comments")
+    @Embedded
     private List<Comment> comments = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY, targetEntity = Account.class)

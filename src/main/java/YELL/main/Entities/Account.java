@@ -26,10 +26,6 @@ public class Account {
     @Column(name = "favourite_medic")
     private List<Medic> favourites = new ArrayList<>();
 
-    @OneToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
-    @JoinColumn(name = "comment_id")
-    private Comment comment;
-
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
     private Medic medic;

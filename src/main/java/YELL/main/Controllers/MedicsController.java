@@ -69,10 +69,10 @@ public class MedicsController {
     public void deleteFavourite(@RequestParam(name = "id_medic", required = true) long idMedic,
                                 @RequestParam(name = "id_User", required = true) long idUser,
                                 @RequestParam(name = "id_comment", required = true) int idComment) {
-        //if (idUser == service.getMedicById(idMedic).get().getComments().get(idComment).accountId) {
+        if (idUser == service.getMedicById(idMedic).get().getComments().get(idComment).accountId) {
             service.deleteComment(service.getMedicById(idMedic).get(), idComment);
-        //} else {
-        //    System.out.println("Соси член лох, ты не создатель этого комментария");
-        //}
+        } else {
+            System.out.println("Соси член лох, ты не создатель этого комментария");
+        }
     }
 }
