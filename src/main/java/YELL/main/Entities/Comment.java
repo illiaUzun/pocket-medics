@@ -2,9 +2,17 @@ package YELL.main.Entities;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "comments_")
 public class Comment {
 
+    @Id
+    @Column(name = "comment_id")
+    @GeneratedValue
+    private long id;
+    @Column(name = "address")
     public long accountId;
+    @Column(name = "address")
     private String comment;
 
     public Comment(long accountId, String comment) {
