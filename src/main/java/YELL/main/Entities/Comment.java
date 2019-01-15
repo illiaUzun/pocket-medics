@@ -2,7 +2,6 @@ package YELL.main.Entities;
 
 import javax.persistence.*;
 
-
 public class Comment {
 
     public long accountId;
