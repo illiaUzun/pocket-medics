@@ -4,11 +4,6 @@ import javax.persistence.*;
 
 @Embeddable
 public class Comment {
-
-    @Id
-    @Column(name = "comment_id")
-    @GeneratedValue
-    private long id;
     @Column(name = "accountId")
     public long accountId;
     @Column(name = "comment")
