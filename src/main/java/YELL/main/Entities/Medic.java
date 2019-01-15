@@ -35,7 +35,6 @@ public class Medic {
     @ElementCollection
     @CollectionTable(name = "comments", joinColumns = @JoinColumn(name = "medic_id"))
     @Column(name = "comments")
-    @Cascade({CascadeType.ALL})
     private List<Comment> comments = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
