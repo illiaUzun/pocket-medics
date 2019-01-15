@@ -2,7 +2,7 @@ package YELL.main.Entities;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "ILoveNika")
 @Table(name = "comments_")
 public class Comment {
 
