@@ -38,11 +38,11 @@ public class MedicService {
 
     public void addComment(Medic medic, Comment comment) {
         medic.getComments().add(comment);
-        repository.save(medic);
+        repository.saveAndFlush(medic);
     }
 
     public void deleteComment(Medic medic, int id) {
         medic.getComments().remove(id);
-        repository.save(medic);
+        repository.saveAndFlush(medic);
     }
 }
