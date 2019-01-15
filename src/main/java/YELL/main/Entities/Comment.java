@@ -10,9 +10,9 @@ public class Comment {
     @Column(name = "comment_id")
     @GeneratedValue
     private long id;
-    @Column(name = "address")
+    @Column(name = "accountId")
     public long accountId;
-    @Column(name = "address")
+    @Column(name = "comment")
     private String comment;
 
     public Comment(long accountId, String comment) {
