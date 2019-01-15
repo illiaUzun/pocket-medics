@@ -15,6 +15,9 @@ public class Comment {
     @Column(name = "comment")
     private String comment;
 
+    public Comment() {
+    }
+
     public Comment(long accountId, String comment) {
         this.accountId = accountId;
         this.comment = comment;
