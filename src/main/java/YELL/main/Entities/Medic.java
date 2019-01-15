@@ -32,7 +32,7 @@ public class Medic {
     @ElementCollection
     @CollectionTable(name = "comments", joinColumns = @JoinColumn(name = "medic_id"))
     @Column(name = "comments")
-    private List<Comment> comments = new ArrayList<>();
+    private List<String> comments = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY, targetEntity = Account.class)
     @JoinColumn(name = "account_id")
@@ -105,11 +105,20 @@ public class Medic {
         this.account = account;
     }
 
-    public List<Comment> getComments() {
+    public List<String> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(List<String> comments) {
         this.comments = comments;
     }
+
+
+    //    public List<Comment> getComments() {
+//        return comments;
+//    }
+//
+//    public void setComments(List<Comment> comments) {
+//        this.comments = comments;
+//    }
 }

@@ -24,7 +24,7 @@ public class Account {
     @ElementCollection
     @CollectionTable(name = "account_favourites", joinColumns = @JoinColumn(name = "account_id"))
     @Column(name = "favourite_medic")
-    private List<String> favourites = new ArrayList<>();
+    private List<Medic> favourites = new ArrayList<>();
 
 
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL,
