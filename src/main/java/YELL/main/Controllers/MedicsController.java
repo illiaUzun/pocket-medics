@@ -47,7 +47,7 @@ public class MedicsController {
     public String getMedicById(@RequestParam(name = "id", required = true) long id) {
         Optional<Medic> user = service.getMedicById(id);
         Gson gson = new Gson();
-        return gson.toJson(user);
+        return new String("{\"firstname\":firstname, \"category\":daun");
         //return user.orElse(null);
     }
 
