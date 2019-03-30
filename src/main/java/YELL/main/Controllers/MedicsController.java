@@ -3,14 +3,15 @@ package YELL.main.Controllers;
 import YELL.main.Entities.Comment;
 import YELL.main.Entities.Medic;
 import YELL.main.Services.MedicService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.PermissionDeniedDataAccessException;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,9 +44,11 @@ public class MedicsController {
     }
 
     @RequestMapping(value = "/medic", method = RequestMethod.GET)
-    public Medic getMedicById(@RequestParam(name = "id", required = true) long id) {
+    public String getMedicById(@RequestParam(name = "id", required = true) long id) {
         Optional<Medic> user = service.getMedicById(id);
-        return user.orElse(null);
+        Gson gson = new Gson();
+        return gson.toJson(user);
+        //return user.orElse(null);
     }
 
     @RequestMapping(value = "/medic", method = RequestMethod.DELETE)

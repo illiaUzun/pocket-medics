@@ -1,6 +1,5 @@
 package YELL.main.Services;
 
-import YELL.main.Entities.Account;
 import YELL.main.Entities.Comment;
 import YELL.main.Entities.Medic;
 import YELL.main.Repositories.MedicsTableRepository;
