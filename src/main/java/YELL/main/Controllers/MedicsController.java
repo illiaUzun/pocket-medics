@@ -47,13 +47,14 @@ public class MedicsController {
     @RequestMapping(value = "/medic", method = RequestMethod.GET)
     public String getMedicById(@RequestParam(name = "id", required = true) long id) {
         Optional<Medic> user = service.getMedicById(id);
-        ObjectMapper mapper = new ObjectMapper();
+        /*ObjectMapper mapper = new ObjectMapper();
         try {
             return mapper.writeValueAsString(user);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return null;
+        return null;*/
+        return "test";
     }
 
     @RequestMapping(value = "/medic", method = RequestMethod.DELETE)
