@@ -3,6 +3,8 @@ package YELL.main.Controllers;
 import YELL.main.Entities.Comment;
 import YELL.main.Entities.Medic;
 import YELL.main.Services.MedicService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,9 +48,13 @@ public class MedicsController {
     @RequestMapping(value = "/medic", method = RequestMethod.GET)
     public String getMedicById(@RequestParam(name = "id", required = true) long id) {
         Optional<Medic> user = service.getMedicById(id);
-        Gson gson = new Gson();
-        return new String("{\"firstname\":firstname, \"category\":daun}");
-        //return user.orElse(null);
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(user);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @RequestMapping(value = "/medic", method = RequestMethod.DELETE)
