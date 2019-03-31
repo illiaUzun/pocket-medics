@@ -42,8 +42,10 @@ public class MedicsController {
     }
 
     @RequestMapping(value = "/medic", method = RequestMethod.GET)
-    public Optional<Medic> getMedicById(@RequestParam(name = "id", required = true) long id) {
-        return service.getMedicById(id);
+    public Medic getMedicById(@RequestParam(name = "id", required = true) long id) {
+        if (service.getMedicById(id).isPresent()){
+            return service.getMedicById(id).get();
+        }
     }
 
     @RequestMapping(value = "/medic", method = RequestMethod.DELETE)
