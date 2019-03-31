@@ -3,8 +3,6 @@ package YELL.main.Controllers;
 import YELL.main.Entities.Comment;
 import YELL.main.Entities.Medic;
 import YELL.main.Services.MedicService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,15 +42,8 @@ public class MedicsController {
     }
 
     @RequestMapping(value = "/medic", method = RequestMethod.GET)
-    public String getMedicById(@RequestParam(name = "id", required = true) long id) {
-        Optional<Medic> user = service.getMedicById(id);
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.writeValueAsString(user);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public Optional<Medic> getMedicById(@RequestParam(name = "id", required = true) long id) {
+        return service.getMedicById(id);
     }
 
     @RequestMapping(value = "/medic", method = RequestMethod.DELETE)
