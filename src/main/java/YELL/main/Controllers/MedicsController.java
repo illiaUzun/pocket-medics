@@ -46,6 +46,7 @@ public class MedicsController {
         if (service.getMedicById(id).isPresent()){
             return service.getMedicById(id).get();
         }
+        return null;
     }
 
     @RequestMapping(value = "/medic", method = RequestMethod.DELETE)
