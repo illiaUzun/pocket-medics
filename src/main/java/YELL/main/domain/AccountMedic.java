@@ -1,6 +1,5 @@
 package YELL.main.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -16,15 +15,29 @@ import java.util.Set;
 @Entity
 @Table(name = "account_medic")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class AccountMedic extends Account implements Serializable {
+public class AccountMedic implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
+    private Long id;
 
-//    @ElementCollection
-    @OneToMany(mappedBy = "id")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<AccountMedic> favourites = new HashSet<>();
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "surname")
+    private String surname;
+
+    @Column(name = "telephone")
+    private String telephone;
+
+    @Column(name = "e_mail")
+    private String eMail;
+
+    @Column(name = "jhi_password")
+    private String password;
 
     @Column(name = "experience")
     private Integer experience;
@@ -38,181 +51,140 @@ public class AccountMedic extends Account implements Serializable {
     @Column(name = "verification")
     private Boolean verification;
 
-    @Column(name = "catagory")
-    private Catagories catagory;
+    @Column(name = "category")
+    private Categories category;
 
     @OneToMany(mappedBy = "id")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Comment> comments = new HashSet<>();
 
-    public Catagories getCatagory() {
-        return catagory;
-    }
+    @OneToMany(mappedBy = "id")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<AccountMedic> favourites = new HashSet<>();
 
-    public AccountMedic catagory(Catagories catagory) {
-        this.catagory = catagory;
-        return this;
-    }
 
     public AccountMedic() {
     }
 
-    public AccountMedic(String name, String surname, String telephone, String eMail, String password, Set<AccountMedic> favourites, Integer experience, String adress, String info, Boolean verification, Catagories catagory, Set<Comment> comments) {
-        super(name, surname, telephone, eMail, password, favourites);
+    public AccountMedic(Set<AccountMedic> favourites, String name, String surname, String telephone, String eMail, String password, Integer experience, String adress, String info, Boolean verification, Categories category, Set<Comment> comments) {
+        this.favourites = favourites;
+        this.name = name;
+        this.surname = surname;
+        this.telephone = telephone;
+        this.eMail = eMail;
+        this.password = password;
         this.experience = experience;
         this.adress = adress;
         this.info = info;
         this.verification = verification;
-        this.catagory = catagory;
+        this.category = category;
         this.comments = comments;
     }
 
-    @Override
-    public Long getId() {
-        return super.getId();
+
+    /**
+     * CATEGORY
+     *
+     * @return
+     */
+    public Categories getCategory() {
+        return category;
     }
 
-    @Override
-    public void setId(Long id) {
-        super.setId(id);
+    public AccountMedic category(Categories category) {
+        this.category = category;
+        return this;
     }
 
-    @Override
-    public String getName() {
-        return super.getName();
+    public void setCategory(Categories category) {
+        this.category = category;
     }
 
-    @Override
-    public Account name(String name) {
-        return super.name(name);
+    /**
+     * FAVOURITES
+     *
+     * @return
+     */
+    public Set<AccountMedic> getFavourites() {
+        return favourites;
     }
 
-    @Override
-    public void setName(String name) {
-        super.setName(name);
-    }
-
-    @Override
-    public String getSurname() {
-        return super.getSurname();
-    }
-
-    @Override
-    public Account surname(String surname) {
-        return super.surname(surname);
-    }
-
-    @Override
-    public void setSurname(String surname) {
-        super.setSurname(surname);
-    }
-
-    @Override
-    public String getTelephone() {
-        return super.getTelephone();
-    }
-
-    @Override
-    public Account telephone(String telephone) {
-        return super.telephone(telephone);
-    }
-
-    @Override
-    public void setTelephone(String telephone) {
-        super.setTelephone(telephone);
-    }
-
-    @Override
-    public String geteMail() {
-        return super.geteMail();
-    }
-
-    @Override
-    public Account eMail(String eMail) {
-        return super.eMail(eMail);
-    }
-
-    @Override
-    public void seteMail(String eMail) {
-        super.seteMail(eMail);
-    }
-
-    @Override
-    public String getPassword() {
-        return super.getPassword();
-    }
-
-    @Override
-    public Account password(String password) {
-        return super.password(password);
-    }
-
-    @Override
-    public void setPassword(String password) {
-        super.setPassword(password);
-    }
-
-    @Override
-    public Account favourites(Set<AccountMedic> favourites) {
-        return super.favourites(favourites);
-    }
-
-    @Override
-    public Account addFavourites(AccountMedic favourite) {
-        return super.addFavourites(favourite);
-    }
-
-    @Override
-    public Account removeFavourites(AccountMedic favourite) {
-        return super.removeFavourites(favourite);
-    }
-
-    @Override
     public void setFavourites(Set<AccountMedic> favourites) {
-        super.setFavourites(favourites);
+        this.favourites = favourites;
     }
 
-    public void setCatagory(Catagories catagory) {
-        this.catagory = catagory;
+    /**
+     * NAME
+     *
+     * @return
+     */
+    public String getName() {
+        return name;
     }
 
-    public Integer getExperience() {
-        return experience;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public AccountMedic experience(Integer experience) {
-        this.experience = experience;
-        return this;
+    /**
+     * SURNAME
+     *
+     * @return
+     */
+    public String getSurname() {
+        return surname;
     }
 
-    public void setExperience(Integer experience) {
-        this.experience = experience;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public String getAdress() {
-        return adress;
+    /**
+     * TELEPHONE
+     *
+     * @return
+     */
+    public String getTelephone() {
+        return telephone;
     }
 
-    public AccountMedic adress(String adress) {
-        this.adress = adress;
-        return this;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    /**
+     * MAIL
+     *
+     * @return
+     */
+    public String geteMail() {
+        return eMail;
     }
 
-    public String getInfo() {
-        return info;
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
     }
 
-    public AccountMedic info(String info) {
-        this.info = info;
-        return this;
+    /**
+     * PASSWORD
+     *
+     * @return
+     */
+    public String getPassword() {
+        return password;
     }
 
-    public void setInfo(String info) {
-        this.info = info;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * VERIFICATION
+     *
+     * @return
+     */
+    public Boolean getVerification() {
+        return verification;
     }
 
     public Boolean isVerification() {
@@ -228,6 +200,65 @@ public class AccountMedic extends Account implements Serializable {
         this.verification = verification;
     }
 
+    /**
+     * EXPERIENCE
+     *
+     * @return
+     */
+    public Integer getExperience() {
+        return experience;
+    }
+
+    public AccountMedic experience(Integer experience) {
+        this.experience = experience;
+        return this;
+    }
+
+    public void setExperience(Integer experience) {
+        this.experience = experience;
+    }
+
+    /**
+     * ADRESS
+     *
+     * @return
+     */
+    public String getAdress() {
+        return adress;
+    }
+
+    public AccountMedic adress(String adress) {
+        this.adress = adress;
+        return this;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    /**
+     * INFO
+     *
+     * @return
+     */
+    public String getInfo() {
+        return info;
+    }
+
+    public AccountMedic info(String info) {
+        this.info = info;
+        return this;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    /**
+     * COMMENTS
+     *
+     * @return
+     */
     public Set<Comment> getComments() {
         return comments;
     }
@@ -255,35 +286,33 @@ public class AccountMedic extends Account implements Serializable {
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        AccountMedic accountMedic = (AccountMedic) o;
-        if (accountMedic.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), accountMedic.getId());
-    }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 
     @Override
     public String toString() {
         return "AccountMedic{" +
-            "id=" + getId() +
-            ", catagory=" + getCatagory() +
-            ", experience=" + getExperience() +
-            ", adress='" + getAdress() + "'" +
-            ", info='" + getInfo() + "'" +
-            ", verification='" + isVerification() + "'" +
-            "}";
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", eMail='" + eMail + '\'' +
+                ", password='" + password + '\'' +
+                ", experience=" + experience +
+                ", adress='" + adress + '\'' +
+                ", info='" + info + '\'' +
+                ", verification=" + verification +
+                ", category=" + category +
+                ", comments=" + comments +
+                ", favourites=" + favourites +
+                '}';
     }
 }

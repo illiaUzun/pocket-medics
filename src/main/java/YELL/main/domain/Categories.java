@@ -1,6 +1,6 @@
 package YELL.main.domain;
 
-public enum Catagories {
+public enum Categories {
 
     ALLERGOLOGY,
     ANDROLOGY,

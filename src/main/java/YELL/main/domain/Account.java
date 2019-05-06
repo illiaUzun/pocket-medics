@@ -15,9 +15,6 @@ import java.util.Set;
 @Entity
 @Table(name = "account")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Inheritance(
-        strategy = InheritanceType.JOINED
-)
 public class Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,9 +39,8 @@ public class Account implements Serializable {
     @Column(name = "jhi_password")
     private String password;
 
-    @ElementCollection
-    @CollectionTable(name = "account_favourites", joinColumns = @JoinColumn(name = "account_id"))
-    @Column(name = "favourite_medic")
+    @OneToMany(mappedBy = "id")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<AccountMedic> favourites = new HashSet<>();
 
     public Account() {
@@ -60,6 +56,12 @@ public class Account implements Serializable {
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+
+    /**
+     * ID
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
@@ -68,6 +70,11 @@ public class Account implements Serializable {
         this.id = id;
     }
 
+    /**
+     * NAME
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
@@ -81,6 +88,11 @@ public class Account implements Serializable {
         this.name = name;
     }
 
+    /**
+     * SURNAME
+     *
+     * @return
+     */
     public String getSurname() {
         return surname;
     }
@@ -94,6 +106,11 @@ public class Account implements Serializable {
         this.surname = surname;
     }
 
+    /**
+     * TELEPHONE
+     *
+     * @return
+     */
     public String getTelephone() {
         return telephone;
     }
@@ -107,6 +124,11 @@ public class Account implements Serializable {
         this.telephone = telephone;
     }
 
+    /**
+     * MAIL
+     *
+     * @return
+     */
     public String geteMail() {
         return eMail;
     }
@@ -120,6 +142,11 @@ public class Account implements Serializable {
         this.eMail = eMail;
     }
 
+    /**
+     * PASSWORD
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
@@ -133,6 +160,11 @@ public class Account implements Serializable {
         this.password = password;
     }
 
+    /**
+     * FAVIURITES
+     *
+     * @return
+     */
     public Account favourites(Set<AccountMedic> favourites) {
         this.favourites = favourites;
         return this;
@@ -176,12 +208,12 @@ public class Account implements Serializable {
     @Override
     public String toString() {
         return "AccountM{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", surname='" + getSurname() + "'" +
-            ", telephone='" + getTelephone() + "'" +
-            ", eMail='" + geteMail() + "'" +
-            ", password='" + getPassword() + "'" +
-            "}";
+                "id=" + getId() +
+                ", name='" + getName() + "'" +
+                ", surname='" + getSurname() + "'" +
+                ", telephone='" + getTelephone() + "'" +
+                ", eMail='" + geteMail() + "'" +
+                ", password='" + getPassword() + "'" +
+                "}";
     }
 }

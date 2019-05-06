@@ -2,7 +2,7 @@ package YELL.main;
 
 
 import YELL.main.domain.AccountMedic;
-import YELL.main.domain.Catagories;
+import YELL.main.domain.Categories;
 import YELL.main.repository.AccountMedicRepository;
 import YELL.main.rest.AccountMedicResource;
 import YELL.main.rest.errors.ExceptionTranslator;
@@ -96,7 +96,7 @@ public class AccountMedicResourceIntTest {
      */
     public static AccountMedic createEntity(EntityManager em) {
         AccountMedic accountMedic = new AccountMedic()
-            .catagory(Catagories.ALLERGOLOGY)
+            .catagory(Categories.ALLERGOLOGY)
             .experience(DEFAULT_EXPERIENCE)
             .adress(DEFAULT_ADRESS)
             .info(DEFAULT_INFO)
@@ -124,7 +124,7 @@ public class AccountMedicResourceIntTest {
         List<AccountMedic> accountMedicList = accountMedicRepository.findAll();
         assertThat(accountMedicList).hasSize(databaseSizeBeforeCreate + 1);
         AccountMedic testAccountMedic = accountMedicList.get(accountMedicList.size() - 1);
-        assertThat(testAccountMedic.getCatagory()).isEqualTo(Catagories.ALLERGOLOGY);
+        assertThat(testAccountMedic.getCatagory()).isEqualTo(Categories.ALLERGOLOGY);
         assertThat(testAccountMedic.getExperience()).isEqualTo(DEFAULT_EXPERIENCE);
         assertThat(testAccountMedic.getAdress()).isEqualTo(DEFAULT_ADRESS);
         assertThat(testAccountMedic.getInfo()).isEqualTo(DEFAULT_INFO);
@@ -161,7 +161,7 @@ public class AccountMedicResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(accountMedic.getId().intValue())))
-            .andExpect(jsonPath("$.[*].catagory").value(hasItem(Catagories.ALLERGOLOGY)))
+            .andExpect(jsonPath("$.[*].catagory").value(hasItem(Categories.ALLERGOLOGY)))
             .andExpect(jsonPath("$.[*].experience").value(hasItem(DEFAULT_EXPERIENCE)))
             .andExpect(jsonPath("$.[*].adress").value(hasItem(DEFAULT_ADRESS.toString())))
             .andExpect(jsonPath("$.[*].info").value(hasItem(DEFAULT_INFO.toString())))
@@ -180,7 +180,7 @@ public class AccountMedicResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(accountMedic.getId().intValue()))
-            .andExpect(jsonPath("$.catagory").value(Catagories.ALLERGOLOGY))
+            .andExpect(jsonPath("$.catagory").value(Categories.ALLERGOLOGY))
             .andExpect(jsonPath("$.experience").value(DEFAULT_EXPERIENCE))
             .andExpect(jsonPath("$.adress").value(DEFAULT_ADRESS.toString()))
             .andExpect(jsonPath("$.info").value(DEFAULT_INFO.toString()))
@@ -207,7 +207,7 @@ public class AccountMedicResourceIntTest {
         // Disconnect from session so that the updates on updatedAccountMedic are not directly saved in db
         em.detach(updatedAccountMedic);
         updatedAccountMedic
-            .catagory(Catagories.ALLERGOLOGY)
+            .catagory(Categories.ALLERGOLOGY)
             .experience(UPDATED_EXPERIENCE)
             .adress(UPDATED_ADRESS)
             .info(UPDATED_INFO)
@@ -222,7 +222,7 @@ public class AccountMedicResourceIntTest {
         List<AccountMedic> accountMedicList = accountMedicRepository.findAll();
         assertThat(accountMedicList).hasSize(databaseSizeBeforeUpdate);
         AccountMedic testAccountMedic = accountMedicList.get(accountMedicList.size() - 1);
-        assertThat(testAccountMedic.getCatagory()).isEqualTo(Catagories.ALLERGOLOGY);
+        assertThat(testAccountMedic.getCatagory()).isEqualTo(Categories.ALLERGOLOGY);
         assertThat(testAccountMedic.getExperience()).isEqualTo(UPDATED_EXPERIENCE);
         assertThat(testAccountMedic.getAdress()).isEqualTo(UPDATED_ADRESS);
         assertThat(testAccountMedic.getInfo()).isEqualTo(UPDATED_INFO);
