@@ -20,7 +20,8 @@ public class AccountMedic implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
     @Column(name = "name")
@@ -57,16 +58,16 @@ public class AccountMedic implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Comment> comments = new HashSet<>();
 
-//    @OneToMany(mappedBy = "id")
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @OneToMany(mappedBy = "id")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 //    private Set<AccountMedic> favourites = new HashSet<>();
-//
+    private Set<AccountMedic> favourites = null;
 
     public AccountMedic() {
     }
 
-    public AccountMedic(String name, String surname, String telephone, String eMail, String password, Integer experience, String adress, String info, Boolean verification, Categories category, Set<Comment> comments) {
-//        this.favourites = favourites;
+    public AccountMedic(Set<AccountMedic> favourites, String name, String surname, String telephone, String eMail, String password, Integer experience, String adress, String info, Boolean verification, Categories category, Set<Comment> comments) {
+        this.favourites = null;
         this.name = name;
         this.surname = surname;
         this.telephone = telephone;
@@ -116,23 +117,23 @@ public class AccountMedic implements Serializable {
         this.category = category;
     }
 
-//    /**
-//     * FAVOURITES
-//     *
-//     * @return
-//     */
-//    public Set<AccountMedic> getFavourites() {
-//        return favourites;
-//    }
-//
-//    public void setFavourites(Set<AccountMedic> favourites) {
-//        this.favourites = favourites;
-//    }
-//
-//    public AccountMedic favourites(Set<AccountMedic> favourites) {
-//        this.favourites = favourites;
-//        return this;
-//    }
+    /**
+     * FAVOURITES
+     *
+     * @return
+     */
+    public Set<AccountMedic> getFavourites() {
+        return favourites;
+    }
+
+    public void setFavourites(Set<AccountMedic> favourites) {
+        this.favourites = favourites;
+    }
+
+    public AccountMedic favourites(Set<AccountMedic> favourites) {
+        this.favourites = favourites;
+        return this;
+    }
 
     /**
      * NAME
@@ -368,7 +369,7 @@ public class AccountMedic implements Serializable {
                 ", verification=" + verification +
                 ", category=" + category +
                 ", comments=" + comments +
-//                ", favourites=" + favourites +
+                ", favourites=" + favourites +
                 '}';
     }
 }
