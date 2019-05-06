@@ -16,7 +16,7 @@ import java.util.Set;
 @Table(name = "account")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Inheritance(
-        strategy = InheritanceType.SINGLE_TABLE
+        strategy = InheritanceType.JOINED
 )
 public class Account implements Serializable {
 
