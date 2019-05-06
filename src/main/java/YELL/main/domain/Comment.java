@@ -35,6 +35,16 @@ public class Comment implements Serializable {
     @Column(name = "text")
     private String text;
 
+    public Comment() {
+    }
+
+    public Comment(Integer patientID, Boolean anonymous, Integer rating, String text) {
+        this.patientID = patientID;
+        this.anonymous = anonymous;
+        this.rating = rating;
+        this.text = text;
+    }
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public void setId(Long id) {
         this.id = id;

@@ -42,9 +42,22 @@ public class Account implements Serializable {
     @Column(name = "jhi_password")
     private String password;
 
-    @OneToMany(mappedBy = "id")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @ElementCollection
+    @CollectionTable(name = "account_favourites", joinColumns = @JoinColumn(name = "account_id"))
+    @Column(name = "favourite_medic")
     private Set<AccountMedic> favourites = new HashSet<>();
+
+    public Account() {
+    }
+
+    public Account(String name, String surname, String telephone, String eMail, String password, Set<AccountMedic> favourites) {
+        this.name = name;
+        this.surname = surname;
+        this.telephone = telephone;
+        this.eMail = eMail;
+        this.password = password;
+        this.favourites = favourites;
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

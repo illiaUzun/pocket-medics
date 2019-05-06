@@ -20,6 +20,26 @@ public class AccountMedic extends Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "surname")
+    private String surname;
+
+    @Column(name = "telephone")
+    private String telephone;
+
+    @Column(name = "e_mail")
+    private String eMail;
+
+    @Column(name = "jhi_password")
+    private String password;
+
+//    @ElementCollection
+    @OneToMany(mappedBy = "id")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<AccountMedic> favourites = new HashSet<>();
+
     @Column(name = "experience")
     private Integer experience;
 
@@ -46,6 +66,124 @@ public class AccountMedic extends Account implements Serializable {
     public AccountMedic catagory(Catagories catagory) {
         this.catagory = catagory;
         return this;
+    }
+
+    public AccountMedic() {
+    }
+
+    public AccountMedic(String name, String surname, String telephone, String eMail, String password, Set<AccountMedic> favourites, Integer experience, String adress, String info, Boolean verification, Catagories catagory, Set<Comment> comments) {
+        super(name, surname, telephone, eMail, password, favourites);
+        this.experience = experience;
+        this.adress = adress;
+        this.info = info;
+        this.verification = verification;
+        this.catagory = catagory;
+        this.comments = comments;
+    }
+
+    @Override
+    public Long getId() {
+        return super.getId();
+    }
+
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+    }
+
+    @Override
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
+    public Account name(String name) {
+        return super.name(name);
+    }
+
+    @Override
+    public void setName(String name) {
+        super.setName(name);
+    }
+
+    @Override
+    public String getSurname() {
+        return super.getSurname();
+    }
+
+    @Override
+    public Account surname(String surname) {
+        return super.surname(surname);
+    }
+
+    @Override
+    public void setSurname(String surname) {
+        super.setSurname(surname);
+    }
+
+    @Override
+    public String getTelephone() {
+        return super.getTelephone();
+    }
+
+    @Override
+    public Account telephone(String telephone) {
+        return super.telephone(telephone);
+    }
+
+    @Override
+    public void setTelephone(String telephone) {
+        super.setTelephone(telephone);
+    }
+
+    @Override
+    public String geteMail() {
+        return super.geteMail();
+    }
+
+    @Override
+    public Account eMail(String eMail) {
+        return super.eMail(eMail);
+    }
+
+    @Override
+    public void seteMail(String eMail) {
+        super.seteMail(eMail);
+    }
+
+    @Override
+    public String getPassword() {
+        return super.getPassword();
+    }
+
+    @Override
+    public Account password(String password) {
+        return super.password(password);
+    }
+
+    @Override
+    public void setPassword(String password) {
+        super.setPassword(password);
+    }
+
+    @Override
+    public Account favourites(Set<AccountMedic> favourites) {
+        return super.favourites(favourites);
+    }
+
+    @Override
+    public Account addFavourites(AccountMedic favourite) {
+        return super.addFavourites(favourite);
+    }
+
+    @Override
+    public Account removeFavourites(AccountMedic favourite) {
+        return super.removeFavourites(favourite);
+    }
+
+    @Override
+    public void setFavourites(Set<AccountMedic> favourites) {
+        super.setFavourites(favourites);
     }
 
     public void setCatagory(Catagories catagory) {
