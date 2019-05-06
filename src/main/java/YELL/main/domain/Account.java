@@ -39,9 +39,9 @@ public class Account implements Serializable {
     @Column(name = "jhi_password")
     private String password;
 
-    @OneToMany(mappedBy = "id")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<AccountMedic> favourites = new HashSet<>();
+//    @OneToMany(mappedBy = "id")
+//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+//    private Set<AccountMedic> favourites = new HashSet<>();
 
     public Account() {
     }
@@ -52,7 +52,7 @@ public class Account implements Serializable {
         this.telephone = telephone;
         this.eMail = eMail;
         this.password = password;
-        this.favourites = favourites;
+//        this.favourites = favourites;
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -160,29 +160,29 @@ public class Account implements Serializable {
         this.password = password;
     }
 
-    /**
-     * FAVIURITES
-     *
-     * @return
-     */
-    public Account favourites(Set<AccountMedic> favourites) {
-        this.favourites = favourites;
-        return this;
-    }
-
-    public Account addFavourites(AccountMedic favourite) {
-        this.favourites.add(favourite);
-        return this;
-    }
-
-    public Account removeFavourites(AccountMedic favourite) {
-        this.favourites.remove(favourite);
-        return this;
-    }
-
-    public void setFavourites(Set<AccountMedic> favourites) {
-        this.favourites = favourites;
-    }
+//    /**
+//     * FAVIURITES
+//     *
+//     * @return
+//     */
+//    public Account favourites(Set<AccountMedic> favourites) {
+//        this.favourites = favourites;
+//        return this;
+//    }
+//
+//    public Account addFavourites(AccountMedic favourite) {
+//        this.favourites.add(favourite);
+//        return this;
+//    }
+//
+//    public Account removeFavourites(AccountMedic favourite) {
+//        this.favourites.remove(favourite);
+//        return this;
+//    }
+//
+//    public void setFavourites(Set<AccountMedic> favourites) {
+//        this.favourites = favourites;
+//    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
