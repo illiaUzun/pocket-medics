@@ -66,7 +66,7 @@ public class AccountMedic implements Serializable {
     public AccountMedic() {
     }
 
-    public AccountMedic(Set<AccountMedic> favourites, String name, String surname, String telephone, String eMail, String password, Integer experience, String adress, String info, Boolean verification, Categories category, Set<Comment> comments) {
+    public AccountMedic(String name, String surname, String telephone, String eMail, String password, Integer experience, String adress, String info, Boolean verification, Categories category, Set<Comment> comments) {
 //        this.favourites = favourites;
         this.name = name;
         this.surname = surname;
