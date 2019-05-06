@@ -120,11 +120,12 @@ public class AccountMedicResource {
 //        return ResponseUtil.wrapOrNotFound(accountMedic);
 //    }
     @GetMapping("/account-medics/{id}")
-    @Timed
+//    @Timed
     public Optional<AccountMedic> getAccountMedic(@PathVariable Long id) {
         log.debug("REST request to get AccountMedic : {}", id);
         return accountMedicService.findOne(id);
     }
+
     /**
      * DELETE  /account-medics/:id : delete the "id" accountMedic.
      *
