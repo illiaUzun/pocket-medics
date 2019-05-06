@@ -53,7 +53,7 @@ public class CommentResourceIntTest {
     @Autowired
     private CommentRepository commentRepository;
 
-    
+
 
     @Autowired
     private CommentService commentService;
@@ -162,7 +162,7 @@ public class CommentResourceIntTest {
             .andExpect(jsonPath("$.[*].rating").value(hasItem(DEFAULT_RATING)))
             .andExpect(jsonPath("$.[*].text").value(hasItem(DEFAULT_TEXT.toString())));
     }
-    
+
 
     @Test
     @Transactional

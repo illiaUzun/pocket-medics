@@ -20,13 +20,14 @@ import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
  * Controller advice to translate the server side exceptions to client-friendly json structures.
  * The error response follows RFC7807 - Problem Details for HTTP APIs (https://tools.ietf.org/html/rfc7807)
  */
-@ControllerAdvice
+
 public class ExceptionTranslator implements ProblemHandling {
 
     /**
@@ -45,7 +46,7 @@ public class ExceptionTranslator implements ProblemHandling {
             .withType(Problem.DEFAULT_TYPE.equals(problem.getType()) ? ErrorConstants.DEFAULT_TYPE : problem.getType())
             .withStatus(problem.getStatus())
             .withTitle(problem.getTitle())
-            .with("path", request.getNativeRequest(HttpServletRequest.class).getRequestURI());
+            .with("path", Objects.requireNonNull(request.getNativeRequest(HttpServletRequest.class)).getRequestURI());
 
         if (problem instanceof ConstraintViolationProblem) {
             builder

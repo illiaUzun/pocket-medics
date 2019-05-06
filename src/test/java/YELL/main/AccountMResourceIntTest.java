@@ -59,7 +59,7 @@ public class AccountMResourceIntTest {
     @Autowired
     private AccountRepository accountRepository;
 
-    
+
 
     @Autowired
     private AccountService accountMService;
@@ -173,7 +173,7 @@ public class AccountMResourceIntTest {
             .andExpect(jsonPath("$.[*].password").value(hasItem(DEFAULT_PASSWORD.toString())))
             .andExpect(jsonPath("$.[*].favourites").value(hasItem(DEFAULT_FAVOURITES)));
     }
-    
+
 
     @Test
     @Transactional

@@ -55,7 +55,7 @@ public class AccountMedicResourceIntTest {
     @Autowired
     private AccountMedicRepository accountMedicRepository;
 
-    
+
 
     @Autowired
     private AccountMedicService accountMedicService;
@@ -167,7 +167,7 @@ public class AccountMedicResourceIntTest {
             .andExpect(jsonPath("$.[*].info").value(hasItem(DEFAULT_INFO.toString())))
             .andExpect(jsonPath("$.[*].verification").value(hasItem(DEFAULT_VERIFICATION.booleanValue())));
     }
-    
+
 
     @Test
     @Transactional
