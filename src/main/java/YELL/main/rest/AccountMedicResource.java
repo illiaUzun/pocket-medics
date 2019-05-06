@@ -84,12 +84,12 @@ public class AccountMedicResource {
      * GET  /account-medics : get all the accountMedics.
      *
      * @param pageable the pagination information
-     * @param filter the filter of the request
+//     * @param filter the filter of the request
      * @return the ResponseEntity with status 200 (OK) and the list of accountMedics in body
      */
     @GetMapping("/account-medics")
     @Timed
-    public ResponseEntity<List<AccountMedic>> getAllAccountMedics(Pageable pageable, @RequestParam(required = false) String filter) {
+    public ResponseEntity<List<AccountMedic>> getAllAccountMedics(Pageable pageable) {
 //        if ("catagory-is-null".equals(filter)) {
 //            log.debug("REST request to get all AccountMedics where catagory is null");
 //            return new ResponseEntity<>(accountMedicService.findAllWhereCatagoryIsNull(),
