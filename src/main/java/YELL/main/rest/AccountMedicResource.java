@@ -90,7 +90,7 @@ public class AccountMedicResource {
     @GetMapping("/account-medics")
     @Timed
     public ResponseEntity<List<AccountMedic>> getAllAccountMedics(Pageable pageable, @RequestParam(required = false) String filter) {
-            if ("catagory-is-null".equals(filter)) {
+        if ("catagory-is-null".equals(filter)) {
             log.debug("REST request to get all AccountMedics where catagory is null");
             return new ResponseEntity<>(accountMedicService.findAllWhereCatagoryIsNull(),
                     HttpStatus.OK);
@@ -112,18 +112,12 @@ public class AccountMedicResource {
      * @param id the id of the accountMedic to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the accountMedic, or with status 404 (Not Found)
      */
-//    @GetMapping("/account-medics/{id}")
-//    @Timed
-//    public ResponseEntity<AccountMedic> getAccountMedic(@PathVariable Long id) {
-//        log.debug("REST request to get AccountMedic : {}", id);
-//        Optional<AccountMedic> accountMedic = accountMedicService.findOne(id);
-//        return ResponseUtil.wrapOrNotFound(accountMedic);
-//    }
     @GetMapping("/account-medics/{id}")
-//    @Timed
-    public Optional<AccountMedic> getAccountMedic(@PathVariable Long id) {
+    @Timed
+    public ResponseEntity<AccountMedic> getAccountMedic(@PathVariable Long id) {
         log.debug("REST request to get AccountMedic : {}", id);
-        return accountMedicService.findOne(id);
+        Optional<AccountMedic> accountMedic = accountMedicService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(accountMedic);
     }
 
     /**
