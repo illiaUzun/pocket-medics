@@ -59,7 +59,7 @@ public class AccountMedic implements Serializable {
     private Set<Comment> comments = new HashSet<>();
 
     @OneToMany(mappedBy = "id")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
     private Set<AccountMedic> favourites = new HashSet<>();
 
 
