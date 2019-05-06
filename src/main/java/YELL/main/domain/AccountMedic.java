@@ -20,20 +20,6 @@ public class AccountMedic extends Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "surname")
-    private String surname;
-
-    @Column(name = "telephone")
-    private String telephone;
-
-    @Column(name = "e_mail")
-    private String eMail;
-
-    @Column(name = "jhi_password")
-    private String password;
 
 //    @ElementCollection
     @OneToMany(mappedBy = "id")
