@@ -84,22 +84,22 @@ public class AccountMedicResource {
      * GET  /account-medics : get all the accountMedics.
      *
      * @param pageable the pagination information
-//     * @param filter the filter of the request
+     * @param filter the filter of the request
      * @return the ResponseEntity with status 200 (OK) and the list of accountMedics in body
      */
     @GetMapping("/account-medics")
     @Timed
-    public ResponseEntity<List<AccountMedic>> getAllAccountMedics(Pageable pageable) {
-//        if ("catagory-is-null".equals(filter)) {
-//            log.debug("REST request to get all AccountMedics where catagory is null");
-//            return new ResponseEntity<>(accountMedicService.findAllWhereCatagoryIsNull(),
-//                    HttpStatus.OK);
-//        }
-//        if ("id-is-null".equals(filter)) {
-//            log.debug("REST request to get all AccountMedics where id is null");
-//            return new ResponseEntity<>(accountMedicService.findAllWhereIdIsNull(),
-//                    HttpStatus.OK);
-//        }
+    public ResponseEntity<List<AccountMedic>> getAllAccountMedics(Pageable pageable, @RequestParam(required = false) String filter) {
+        if ("catagory-is-null".equals(filter)) {
+            log.debug("REST request to get all AccountMedics where catagory is null");
+            return new ResponseEntity<>(accountMedicService.findAllWhereCatagoryIsNull(),
+                    HttpStatus.OK);
+        }
+        if ("id-is-null".equals(filter)) {
+            log.debug("REST request to get all AccountMedics where id is null");
+            return new ResponseEntity<>(accountMedicService.findAllWhereIdIsNull(),
+                    HttpStatus.OK);
+        }
         log.debug("REST request to get a page of AccountMedics");
         Page<AccountMedic> page = accountMedicService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/account-medics");
