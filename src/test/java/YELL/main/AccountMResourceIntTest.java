@@ -104,8 +104,8 @@ public class AccountMResourceIntTest {
             .surname(DEFAULT_SURNAME)
             .telephone(DEFAULT_TELEPHONE)
             .eMail(DEFAULT_E_MAIL)
-            .password(DEFAULT_PASSWORD)
-            .favourites(null);
+            .password(DEFAULT_PASSWORD);
+//            .favourites(null);
         return accountM;
     }
 
@@ -218,8 +218,8 @@ public class AccountMResourceIntTest {
             .surname(UPDATED_SURNAME)
             .telephone(UPDATED_TELEPHONE)
             .eMail(UPDATED_E_MAIL)
-            .password(UPDATED_PASSWORD)
-            .favourites(null);
+            .password(UPDATED_PASSWORD);
+//            .favourites(null);
 
         restAccountMMockMvc.perform(put("/api/account-ms")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
