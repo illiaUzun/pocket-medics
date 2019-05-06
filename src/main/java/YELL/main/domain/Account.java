@@ -15,6 +15,9 @@ import java.util.Set;
 @Entity
 @Table(name = "account")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Inheritance(
+        strategy = InheritanceType.JOINED
+)
 public class Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
