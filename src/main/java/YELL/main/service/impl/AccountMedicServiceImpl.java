@@ -65,7 +65,7 @@ public class AccountMedicServiceImpl implements AccountMedicService {
         log.debug("Request to get all accountMedics where Catagory is null");
         return StreamSupport
             .stream(accountMedicRepository.findAll().spliterator(), false)
-            .filter(accountMedic -> accountMedic.getCatagory() == null)
+            .filter(accountMedic -> accountMedic.getCategory() == null)
             .collect(Collectors.toList());
     }
 

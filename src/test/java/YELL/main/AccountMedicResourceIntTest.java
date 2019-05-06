@@ -96,7 +96,7 @@ public class AccountMedicResourceIntTest {
      */
     public static AccountMedic createEntity(EntityManager em) {
         AccountMedic accountMedic = new AccountMedic()
-            .catagory(Categories.ALLERGOLOGY)
+            .category(Categories.ALLERGOLOGY)
             .experience(DEFAULT_EXPERIENCE)
             .adress(DEFAULT_ADRESS)
             .info(DEFAULT_INFO)
@@ -124,7 +124,7 @@ public class AccountMedicResourceIntTest {
         List<AccountMedic> accountMedicList = accountMedicRepository.findAll();
         assertThat(accountMedicList).hasSize(databaseSizeBeforeCreate + 1);
         AccountMedic testAccountMedic = accountMedicList.get(accountMedicList.size() - 1);
-        assertThat(testAccountMedic.getCatagory()).isEqualTo(Categories.ALLERGOLOGY);
+        assertThat(testAccountMedic.getCategory()).isEqualTo(Categories.ALLERGOLOGY);
         assertThat(testAccountMedic.getExperience()).isEqualTo(DEFAULT_EXPERIENCE);
         assertThat(testAccountMedic.getAdress()).isEqualTo(DEFAULT_ADRESS);
         assertThat(testAccountMedic.getInfo()).isEqualTo(DEFAULT_INFO);
@@ -207,7 +207,7 @@ public class AccountMedicResourceIntTest {
         // Disconnect from session so that the updates on updatedAccountMedic are not directly saved in db
         em.detach(updatedAccountMedic);
         updatedAccountMedic
-            .catagory(Categories.ALLERGOLOGY)
+            .category(Categories.ALLERGOLOGY)
             .experience(UPDATED_EXPERIENCE)
             .adress(UPDATED_ADRESS)
             .info(UPDATED_INFO)
@@ -222,7 +222,7 @@ public class AccountMedicResourceIntTest {
         List<AccountMedic> accountMedicList = accountMedicRepository.findAll();
         assertThat(accountMedicList).hasSize(databaseSizeBeforeUpdate);
         AccountMedic testAccountMedic = accountMedicList.get(accountMedicList.size() - 1);
-        assertThat(testAccountMedic.getCatagory()).isEqualTo(Categories.ALLERGOLOGY);
+        assertThat(testAccountMedic.getCategory()).isEqualTo(Categories.ALLERGOLOGY);
         assertThat(testAccountMedic.getExperience()).isEqualTo(UPDATED_EXPERIENCE);
         assertThat(testAccountMedic.getAdress()).isEqualTo(UPDATED_ADRESS);
         assertThat(testAccountMedic.getInfo()).isEqualTo(UPDATED_INFO);

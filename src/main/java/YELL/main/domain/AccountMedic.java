@@ -81,7 +81,24 @@ public class AccountMedic implements Serializable {
         this.comments = comments;
     }
 
+    /**
+     * CATEGORY
+     *
+     * @return
+     */
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public AccountMedic id(Long id) {
+        this.id = id;
+        return this;
+    }
     /**
      * CATEGORY
      *
@@ -113,6 +130,11 @@ public class AccountMedic implements Serializable {
         this.favourites = favourites;
     }
 
+    public AccountMedic favourites(Set<AccountMedic> favourites) {
+        this.favourites = favourites;
+        return this;
+    }
+
     /**
      * NAME
      *
@@ -124,6 +146,11 @@ public class AccountMedic implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public AccountMedic name(String name) {
+        this.name = name;
+        return this;
     }
 
     /**
@@ -139,6 +166,11 @@ public class AccountMedic implements Serializable {
         this.surname = surname;
     }
 
+    public AccountMedic surname(String surname) {
+        this.surname = surname;
+        return this;
+    }
+
     /**
      * TELEPHONE
      *
@@ -150,6 +182,11 @@ public class AccountMedic implements Serializable {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public AccountMedic telephone(String surname) {
+        this.telephone = telephone;
+        return this;
     }
 
     /**
@@ -165,6 +202,11 @@ public class AccountMedic implements Serializable {
         this.eMail = eMail;
     }
 
+    public AccountMedic mail(String eMail) {
+        this.eMail = eMail;
+        return this;
+    }
+
     /**
      * PASSWORD
      *
@@ -176,6 +218,11 @@ public class AccountMedic implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public AccountMedic password(String password) {
+        this.password = password;
+        return this;
     }
 
     /**
