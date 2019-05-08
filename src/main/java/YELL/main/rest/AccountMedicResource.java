@@ -101,7 +101,7 @@ public class AccountMedicResource {
                     HttpStatus.OK);
         }
         log.debug("REST request to get a page of AccountMedics");
-        Page<AccountMedic> page = accountMedicService.findAll(pageable);
+        Page<AccountMedic> page = accountMedicService.findAll(Pageable.unpaged());
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/account-medics");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

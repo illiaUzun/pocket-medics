@@ -161,7 +161,7 @@ public class Account implements Serializable {
     }
 
 //    /**
-//     * FAVIURITES
+//     * FAVOURITES
 //     *
 //     * @return
 //     */
